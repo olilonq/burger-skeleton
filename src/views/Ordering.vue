@@ -101,7 +101,7 @@ export default {
 #ordering {
 
   margin:auto;
-  width: 40em;
+  width: 20em;
 }
 #ingredientGrid {
   display: grid;
