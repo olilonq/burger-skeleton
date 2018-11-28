@@ -4,6 +4,7 @@
       <button v-on:click="incrementCounter">+</button>
       <button v-on:click="decreaseCounter">-</button>
       {{counter}}, {{item["ingredient_"+ lang]}}, {{item.selling_price}}:-, {{item.stock}} pcs
+      <img :src="getImage(item.image)">
     </label>
   </div>
 </template>
@@ -27,6 +28,14 @@ export default {
       // can catch it with v-on:increment in the component declaration
       this.$emit('increment');
   }
+},
+getImage:function(image){
+  if (image !== undefined) {
+    let img =require('../assets/' + image);
+    console.log(img);
+    return img;
+  }
+  else return require('../assets/nopic.jpg');
 },
     decreaseCounter: function(){
       if(this.counter > 0){
