@@ -4,7 +4,7 @@
     <img class="example-panel" src="@/assets/exampleImage.jpg">
 
     <h1>{{ uiLabels.ingredients }}</h1>
-  
+
 <div id="ingredientGrid">
     <Ingredient
       ref="ingredient"
