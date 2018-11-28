@@ -1,10 +1,11 @@
 <template>
   <div id="ordering">
-    <img class="example-panel" src="@/assets/exampleImage.jpg">
     <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+    <img class="example-panel" src="@/assets/exampleImage.jpg">
 
     <h1>{{ uiLabels.ingredients }}</h1>
-
+  
+<div id="ingredientGrid">
     <Ingredient
       ref="ingredient"
       v-for="item in ingredients"
@@ -14,7 +15,7 @@
       :lang="lang"
       :key="item.ingredient_id">
     </Ingredient>
-
+</div>
     <h1>{{ uiLabels.order }}</h1>
     {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
     <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
@@ -98,20 +99,33 @@ export default {
 <style scoped>
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
 #ordering {
+
   margin:auto;
   width: 40em;
+}
+#ingredientGrid {
+  display: grid;
+  grid-template-columns: 200px 200px;
+  grid-template-rows: auto;
+
+
 }
 
 .example-panel {
   position: fixed;
-  left:0;
+  left:1;
   top:0;
   z-index: -2;
+
 }
 .ingredient {
   border: 1px solid #ccd;
   padding: 1em;
+  margin-left: 5em;
+  width: 10em;
+  height: 10em;
   background-image: url('~@/assets/exampleImage.jpg');
   color: white;
+
 }
 </style>
