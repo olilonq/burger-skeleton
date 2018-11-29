@@ -30,9 +30,8 @@ export default {
   }
 },
 getImage:function(image){
-  if (image !== undefined) {
+  if (image !== "") {
     let img =require('../assets/' + image);
-    console.log(img);
     return img;
   }
   else return require('../assets/nopic.jpg');

@@ -1,4 +1,5 @@
 <template>
+      <div class="grid-d">
 <div id="orders">
   <h1>{{ uiLabels.ordersInQueue }}</h1>
   <div>
@@ -7,25 +8,29 @@
       v-if="order.status !== 'done'"
       v-on:done="markDone(key)"
       :order-id="key"
-      :order="order" 
+      :order="order"
       :ui-labels="uiLabels"
       :lang="lang"
       :key="key">
     </OrderItemToPrepare>
   </div>
+
   <h1>{{ uiLabels.ordersFinished }}</h1>
   <div>
-    <OrderItem
-      v-for="(order, key) in orders"
-      v-if="order.status === 'done'"
-      :order-id="key"
-      :order="order"
-      :lang="lang"
-      :ui-labels="uiLabels"
-      :key="key">
-    </OrderItem>
+    <div class="grid-c">
+      <div class="griditem" v-for="(order, key) in orders" :key="key">
+        <OrderItem
+          v-if="order.status === 'done'"
+          :order-id="key"
+          :order="order"
+          :lang="lang"
+          :ui-labels="uiLabels">
+        </OrderItem>
+      </div>
+    </div>
   </div>
-</div>	
+</div>
+</div>
 </template>
 <script>
 import OrderItem from '@/components/OrderItem.vue'
@@ -40,7 +45,7 @@ export default {
     OrderItem,
     OrderItemToPrepare
   },
-  mixins: [sharedVueStuff], // include stuff that is used in both 
+  mixins: [sharedVueStuff], // include stuff that is used in both
                             //the ordering system and the kitchen
   data: function(){
     return {
@@ -63,5 +68,13 @@ export default {
   h1 {
     text-transform: uppercase;
     font-size: 1.4em;
+  }
+  .grid-c{
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+  }
+  .grid-c{
+    display: grid;
+    grid-template-columns: 600px 600px;
   }
 </style>

@@ -1,0 +1,62 @@
+ingredient_id,ingredient_sv,ingredient_en,category,milk_free,gluten_free,vegan,selling_price,image
+1,brioche,brioche,1,0,0,0,10,burger.jpg
+2,glutenfritt bröd,gluten free bread,1,1,1,1,10,burger.jpg
+3,veganskt bröd,vegan bun,1,0,0,1,10,burger.jpg
+4,fullkornsbrioche,whole wheat brioche,1,0,0,0,10,
+5,bönburgare,bean patty,2,1,1,1,40,
+6,nötfärsburgare 100g,beef patty 100g,2,1,1,0,40,
+7,nötfärsburgare 200g,beef patty 200g,2,1,1,0,60,
+8,kycklingburgare,chicken patty,2,1,0,0,40,
+9,friterad halloumi,deep-fried halloumi,2,0,0,0,40,halloumi.jpg
+10,fiskfilé,fish filet,2,1,0,0,40,fish.jpg
+11,grillad aubergine,grilled eggplant,2,1,1,1,30,
+12,hummer,lobster,2,1,1,0,80,lobster.jpg
+13,pulled jackfruit,pulled jackfruit,2,1,1,1,40,
+14,pulled pork,pulled pork,2,1,1,0,40,
+15,avocado,avocado,3,1,1,1,10,avocado.jpg
+16,bacon,bacon,3,1,1,0,10,
+17,banan,banana,3,1,1,1,5,
+18,löjrom,bleak caviar,3,1,1,0,50,
+19,karamelliserad lök,candied onions,3,1,1,1,5,
+20,cheddar,cheddar cheese,3,0,1,0,10,
+21,koriander,cilantro,3,1,1,1,5,
+22,coleslaw,coleslaw,3,1,1,0,5,
+23,friterade lökringar,deep-fried onion rings,3,1,0,1,15,
+24,stekt ägg,fried egg,3,1,1,0,10,egg.jpg
+25,chèvre,goat cheese,3,0,1,0,10,
+26,jalapeño,jalapeño,3,1,1,1,5,
+27,kimchi,kimchi,3,1,1,1,10,
+28,krispsallad,lettuce,3,1,1,1,5,
+29,svampstuvning,mushroom stew,3,0,1,0,15,
+30,pepper jack-ost,pepper jack cheese,3,0,1,0,10,
+31,inlagd gurka,pickled cucumber,3,1,1,1,5,
+32,inlagd rödlök,pickled red onion,3,1,1,1,5,
+33,rå rödlök,raw red onion,3,1,1,1,5,
+34,rå gul lök,raw yellow onion,3,1,1,1,5,
+35,salami,salami,3,1,1,0,10,
+36,surkål,sauerkraut,3,1,1,1,5,
+37,tomat,tomato,3,1,1,1,5,
+38,vegansk ost,vegan cheese,3,1,1,1,10,
+39,aioli,aioli,4,1,1,0,5,
+40,ajvar,ajvar,4,1,1,1,10,
+41,barbecuesås,barbecue sauce,4,1,1,1,5,
+42,klassisk hamburgarsås,classic hamburger dressing,4,1,1,1,10,
+43,dijonsås,dijon sauce,4,1,1,1,0,
+44,guacamole,guacamole,4,1,1,0,5,
+45,hot salsa,hot salsa,4,1,1,1,0,
+46,hummus,hummus,4,1,1,1,0,
+47,ketchup,ketchup,4,1,1,1,5,
+48,majonnäs,mayonnaise,4,1,1,0,5,
+49,senap,mustard,4,1,1,0,5,
+50,sriracha,sriracha,4,1,0,0,10,
+51,teriyakisås,teriyaki sauce,4,1,1,1,10,gluten_free.jpg
+52,tryffelmajonnäs,truffle mayonnaise,4,1,0,1,10,wheat.jpg
+53,tzatziki,tzatziki,4,0,0,0,10,
+54,nachochips,nachos,5,1,0,1,20,
+55,potatisstrips,potato fries,5,1,1,1,20,
+56,sötpotatisstrips,sweet potato fries,5,1,1,1,30,
+57,chokladmilkshake,chocolate milk shake,5,0,1,0,40,
+58,pucko,pucko,5,0,1,0,25,pucko.jpg
+59,läsk,soda,5,1,1,1,20,
+60,jordgubbsmilkshake,strawberry milk shake,5,0,1,0,40,
+61,vegansk mango lassi,vegan mango lassi,5,1,1,1,40,
