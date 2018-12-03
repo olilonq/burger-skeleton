@@ -125,7 +125,7 @@ export default {
   width: 10em;
   height: 10em;
   background-image: url('~@/assets/exampleImage.jpg');
-  color: white;
+  color: black;
 
 }
 </style>
