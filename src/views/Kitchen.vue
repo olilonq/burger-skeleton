@@ -1,36 +1,40 @@
 <template>
-      <div class="grid-d">
-<div id="orders">
-  <h1>{{ uiLabels.ordersInQueue }}</h1>
-  <div>
-    <OrderItemToPrepare
-      v-for="(order, key) in orders"
-      v-if="order.status !== 'done'"
-      v-on:done="markDone(key)"
-      :order-id="key"
-      :order="order"
-      :ui-labels="uiLabels"
-      :lang="lang"
-      :key="key">
-    </OrderItemToPrepare>
-  </div>
 
-  <h1>{{ uiLabels.ordersFinished }}</h1>
-  <div>
-    <div class="grid-c">
-      <div class="griditem" v-for="(order, key) in orders" :key="key">
-        <OrderItem
-          v-if="order.status === 'done'"
-          :order-id="key"
-          :order="order"
-          :lang="lang"
-          :ui-labels="uiLabels">
-        </OrderItem>
+  <div id="orders">
+<div class="grid-d">
+    <div>
+    <h1>{{ uiLabels.ordersInQueue }}</h1>
+    <div>
+      <OrderItemToPrepare
+        v-for="(order, key) in orders"
+        v-if="order.status !== 'done'"
+        v-on:done="markDone(key)"
+        :order-id="key"
+        :order="order"
+        :ui-labels="uiLabels"
+        :lang="lang"
+        :key="key">
+      </OrderItemToPrepare>
+    </div>
+    </div>
+<div>
+    <h1>{{ uiLabels.ordersFinished }}</h1>
+    <div>
+      <div class="grid-c">
+        <div class="griditem" v-for="(order, key) in orders" :key="key">
+          <OrderItem
+            v-if="order.status === 'done'"
+            :order-id="key"
+            :order="order"
+            :lang="lang"
+            :ui-labels="uiLabels">
+          </OrderItem>
+        </div>
       </div>
     </div>
+    </div>
   </div>
-</div>
-</div>
+  </div>
 </template>
 <script>
 import OrderItem from '@/components/OrderItem.vue'
@@ -71,9 +75,9 @@ export default {
   }
   .grid-c{
     display: grid;
-    grid-template-columns: 200px 200px 200px;
+    grid-template-columns: 200px 200px 200px 200px 200px;
   }
-  .grid-c{
+  .grid-d{
     display: grid;
     grid-template-columns: 600px 600px;
   }

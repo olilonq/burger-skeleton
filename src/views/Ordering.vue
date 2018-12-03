@@ -193,10 +193,11 @@ export default {
   border: 1px solid #ccd;
   border-radius:10px;
   padding: 1em;
+
   margin-right:0.5em;
   margin-left: 0.5em;
   margin-top: 0.5em;
-  color: white;
+  color: black;
   width:7em;
   height: 7em;
   background-size: 150px 150px;
@@ -248,7 +249,6 @@ export default {
     font-size: 28px; /* Increased text to enable scrolling */
     padding: 1px 10px;
 }
-
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
