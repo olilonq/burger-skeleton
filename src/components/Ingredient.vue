@@ -1,10 +1,10 @@
 <template>
-  <div class="ingredient">
+  <div class="ingredient" :style ="{'background-image': 'url(' + getImage(item.image) +')'}">
     <label>
       <button v-on:click="incrementCounter">+</button>
       <button v-on:click="decreaseCounter">-</button>
       {{counter}}, {{item["ingredient_"+ lang]}}, {{item.selling_price}}:-, {{item.stock}} pcs
-          <img :src="getImage(item.image)" position="relative" height="130px" width= "130px" align = "top">
+
     </label>
 
   </div>
