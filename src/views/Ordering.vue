@@ -11,16 +11,16 @@
 
 
   <div><a href="#Bröd">Bröd</a></div>
-  <br></br><div><a href="#Protein">Protein</a></div>
+  <div><a href="#Protein">Protein</a></div>
 
-  <br></br><div><a href="#Grönsak">Grönsak</a></div>
+  <div><a href="#Grönsak">Grönsak</a></div>
 
-  <br></br><div><a href="#Övrigt">Övrigt</a></div>
+  <div><a href="#Övrigt">Övrigt</a></div>
 
-  <br></br><div><a href="#Tillbehör">Tillbehör</a></div>
+  <div><a href="#Tillbehör">Tillbehör</a></div>
   </div>
-    <div class="middlepanel">
 
+    <div class="middlepanel">
       <Ingredient
       v-if ="item.category===pageNumber"
       ref="ingredient"
@@ -132,8 +132,8 @@ export default {
 
 .ordering {
   display:grid;
-  grid-auto-rows: 8.5em;
-  grid-auto-columns: 10em;
+  grid-auto-rows: 8.8em;
+  grid-auto-columns: 9em;
   position: relative;
 
 
@@ -150,7 +150,7 @@ export default {
   position:fixed;
   background-color: orange;
   width: 100%;
-  height: 20%;
+  height: 15%;
   border-color:black;
   border-bottom: 1px solid #ccd;
   top:0;
@@ -158,17 +158,17 @@ export default {
   }
 
 .middlepanel {
-
+  position:relative;
   grid-column-start:2;
   grid-column-end:4;
   grid-row-start: 2;
-  grid-row-end:5;
-  height: 90%;
+  grid-row-end:4;
+  height: 100%;
   display: grid;
   grid-template-columns: auto auto;
-  grid-column-gap:1em;
+  grid-column-gap:auto;
   overflow-y: scroll;
-  left:0;
+  overflow-x: hidden;
 
 }
 .bottomBorder {
@@ -220,9 +220,8 @@ export default {
   border-radius:10px;
   width: 8em;
   height: 8em;
-  margin-right:0.5em;
-  margin-left: 0.5em;
   margin-top: 0.5em;
+  margin-left: 0.5em;
   color: black;
   background-size: 130px 130px;
 
@@ -236,7 +235,7 @@ export default {
 
   margin-bottom: 5vh;
 
-    width: 130px;
+    width: 80px;
     position: relative;
     z-index: 0;
     top: 10px;
@@ -249,8 +248,8 @@ export default {
   display: flex;
   align-items:center;
   justify-content: center;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 50px;
   background-color: #FF8C00;
 }
