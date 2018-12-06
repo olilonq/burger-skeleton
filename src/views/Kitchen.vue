@@ -39,6 +39,36 @@
       </div>
     </div>
     </div>
+    Här skriva in kritiskt lagersaldo <div id="statusElement">
+ <!--  <Ingredient
+   ref="ingredient"
+   v-bind:class="{ good: true }"
+   v-for="item in ingredients"
+   v-if="item.stock>=20"
+   :item="item"
+   :lang="lang"
+   :key="item.ingredient_id">
+   </Ingredient>
+   <Ingredient
+   ref="ingredient"
+   v-bind:class="{ neutral: true }"
+   v-for="item in ingredients"
+   v-if="10<item.stock<20"
+   :item="item"
+   :lang="lang"
+   :key="item.ingredient_id">
+   </Ingredient>-->
+   <Ingredient
+   ref="ingredient"
+   v-bind:class="{ bad: true }"
+   v-for="item in ingredients"
+   v-if="item.stock<=20"
+   :item="item"
+   :lang="lang"
+   :key="item.ingredient_id">
+   </Ingredient>
+   </div>
+
   </div>
   <div class="stock">
 <h3 align="center">Lagerstatus:</h3>
@@ -55,6 +85,7 @@
 <script>
 import OrderItem from '@/components/OrderItem.vue'
 import OrderItemToPrepare from '@/components/OrderItemToPrepare.vue'
+import Ingredient from '@/components/Ingredient.vue'
 
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
@@ -63,7 +94,8 @@ export default {
   name: 'Ordering',
   components: {
     OrderItem,
-    OrderItemToPrepare
+    OrderItemToPrepare,
+    Ingredient
   },
   mixins: [sharedVueStuff], // include stuff that is used in both
                             //the ordering system and the kitchen
@@ -129,6 +161,22 @@ export default {
   .grid-d{
     display: grid;
     grid-template-columns: 600px 600px;
+  }
+
+  #statusElement {
+      width: 256px;
+      height: 256px;
+  }
+  .good {
+      background-color: #20A000; /* grön */
+      color: blue;
+  }
+  .bad {
+      background-color: #D00; /* röd */
+      color: red;
+  }
+  .neutral{
+    color: yellow;
   }
 
   .stock {
