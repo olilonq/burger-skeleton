@@ -167,7 +167,7 @@ export default {
   display: grid;
   grid-template-columns: auto auto;
   grid-column-gap:1em;
-  overflow: scroll;
+  overflow-y: scroll;
   left:0;
 
 }
@@ -211,6 +211,7 @@ export default {
   transition: .5s ease;
   top: 0;
   left: 0;
+  z-index: 1;
   background-color: yellow;
 }
 
@@ -234,7 +235,7 @@ export default {
 
     width: 130px;
     position: relative;
-    z-index: 1;
+    z-index: 0;
     top: 10px;
     left: 10px;
     overflow-x: hidden;
