@@ -3,13 +3,24 @@
     <img class="example-panel" src="@/assets/exampleImage.jpg">
 
     <div class ="upperBorder">
-      <button class ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
+      <button id ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
       <h1>{{ uiLabels.ingredients }}  </h1>
     </div>
-    <div class ="leftMiddlepanel">
+    <div class="sidenav">
 
-    </div>
+
+
+  <div><a href="#Bröd">Bröd</a></div>
+  <br></br><div><a href="#Protein">Protein</a></div>
+
+  <br></br><div><a href="#Grönsak">Grönsak</a></div>
+
+  <br></br><div><a href="#Övrigt">Övrigt</a></div>
+
+  <br></br><div><a href="#Tillbehör">Tillbehör</a></div>
+  </div>
     <div class="middlepanel">
+
       <Ingredient
       v-if ="item.category===pageNumber"
       ref="ingredient"
@@ -21,23 +32,15 @@
       :key="item.ingredient_id">
       </Ingredient>
       </div>
-      <div class="sidenav">
-
-  <div><a href="#Bröd">Bröd</a></div>
-  <a href="#Protein">Protein</a>
-  <a href="#Grönsak">Grönsak</a>
-  <a href="#Övrigt">Övrigt</a>
-  <a href="#Tillbehör">Tillbehör</a>
-</div>
     <div class="bottomBorder">
 
-      <h1>{{ uiLabels.order }}</h1>
+      <h2>{{ uiLabels.order }}</h2>
       {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
-      <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
-      <button v-on:click="nextPage()">{{ uiLabels.next }}</button>
-      <button v-on:click="previousPage()">Back</button>
+      <button id="orderButton" v-if="pageNumber===5" v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+      <button id="nextButton" v-if="pageNumber<5" v-on:click="nextPage()">{{ uiLabels.next }}</button>
+      <button id="backButton" v-on:click="previousPage()">Back</button>
 
-      <h1>{{ uiLabels.ordersInQueue }}</h1>
+      <h2>{{ uiLabels.ordersInQueue }}</h2>
       <OrderItem
         v-for="(order, key) in orders"
         v-if="order.status !== 'done'"
@@ -128,88 +131,113 @@ export default {
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
 
 .ordering {
-  width: 30em;
-  height: 50em;
-  grid-auto-rows: 10em;
-  grid-auto-columns: 10em;
   display:grid;
+  grid-auto-rows: 8.5em;
+  grid-auto-columns: 10em;
   position: relative;
-  margin:auto;
+
 
 }
 .example-panel {
-  position: fixed;
-  left:1;
-  top:0;
-  z-index: -2;
+   position: fixed;
+   left:0;
+   top:0;
+   z-index: -2;
 
-}
+ }
 
 .upperBorder {
   position:fixed;
-  grid-column-start:1;
-  grid-column-end:4;
-  grid-row-start:1;
-  grid-row-end:2;
   background-color: orange;
-  width: 31em;
-  height: 10em;
+  width: 100%;
+  height: 20%;
   border-color:black;
-  border: 1px solid #ccd;
-  top:1;
+  border-bottom: 1px solid #ccd;
+  top:0;
+  left:0;
   }
-.leftMiddlepanel {
 
-  grid-column-start:1;
-  grid-column-end:1;
-}
 .middlepanel {
+
   grid-column-start:2;
   grid-column-end:4;
   grid-row-start: 2;
   grid-row-end:5;
+  height: 90%;
   display: grid;
-  grid-template-columns: 10em 10em;
-  grid-row-end:5;
+  grid-template-columns: auto auto;
+  grid-column-gap:1em;
+  overflow-y: scroll;
+  left:0;
 
 }
 .bottomBorder {
-  grid-column-start:1;
-  grid-column-end:3;
-  grid-row-start:4;
-  grid-row-end:5;
+
   background-color: orange;
-  width: 31em;
-  height: 10em;
+  width: 100%;
+  height: 20%;
   border-color:black;
-  border: 1px solid #ccd;
+  border-top: 1px solid #ccd;
   position: fixed;
   bottom:0;
+  left:0;
 
+}
+#languageButton {
+  position: absolute;
+  transition: .5s ease;
+  top: 0;
+  right: 0;
+
+}
+#orderButton {
+  position: absolute;
+  transition: .5s ease;
+  top: 0;
+  right: 0;
+  background-color: rgb(0,200,0);
+}
+
+#nextButton {
+  position: absolute;
+  transition: .5s ease;
+  top: 0;
+  right: 0;
+  background-color: rgb(0,200,0);
+}
+
+#backButton {
+  position: absolute;
+  transition: .5s ease;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: yellow;
 }
 
 .ingredient {
-
   border: 1px solid #ccd;
   border-radius:10px;
   padding: 1em;
-
   margin-right:0.5em;
   margin-left: 0.5em;
   margin-top: 0.5em;
   color: black;
-  width:7em;
-  height: 7em;
-  background-size: 150px 150px;
+  background-size: 130px 130px;
+
 }
 
 .sidenav {
+  grid-column-start:0;
+  grid-column-end:0;
+  grid-row-start:2;
+  grid-row-end:5;
+
     width: 130px;
-    position: fixed;
-    z-index: 1;
-    top: 30px;
+    position: relative;
+    z-index: 0;
+    top: 10px;
     left: 10px;
-    background: #fbe2a4;
     overflow-x: hidden;
     padding: 8px 1;
 }
@@ -218,8 +246,8 @@ export default {
   display: flex;
   align-items:center;
   justify-content: center;
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   border-radius: 50px;
   background-color: #FF8C00;
 }
