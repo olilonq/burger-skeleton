@@ -40,6 +40,16 @@
     </div>
     </div>
   </div>
+  <div class="stock">
+<h3 align="center">Lagerstatus:</h3>
+
+    <div style="display:flex; justify-content:space-evenly;">
+        <div v-for= "item in StockItems" class="StockItems">
+        <h4>{{item}}</h4>
+        </div>
+
+      </div>
+  </div>
   </div>
 </template>
 <script>
@@ -57,11 +67,14 @@ export default {
   },
   mixins: [sharedVueStuff], // include stuff that is used in both
                             //the ordering system and the kitchen
-  data: function(){
+  data:
+
+  function(){
     return {
       chosenIngredients: [],
       price: 0
     }
+
   },
   computed: {
     countBeef100: function(){
@@ -117,4 +130,22 @@ export default {
     display: grid;
     grid-template-columns: 600px 600px;
   }
+
+  .stock {
+    position: fixed;
+    bottom: 0;
+    margin: 10px;
+    width: 95%;}
+
+  .StockItems{
+    border: 1px solid black;
+    background: green;
+    border-radius: 25px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    text-align: center;
+    margin: 0 10px;
+  }
+
 </style>
