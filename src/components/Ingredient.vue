@@ -1,8 +1,8 @@
 <template>
   <div class="ingredient" :style ="{'background-image': 'url(' + getImage(item.image) +')'}">
     <label>
-      <button v-on:click="incrementCounter">+</button>
-      <button v-on:click="decreaseCounter">-</button>
+      <button class="incrementButton" v-on:click="incrementCounter">+</button>
+      <button class="decreaseButton" v-on:click="decreaseCounter">-</button>
       {{counter}}, {{item["ingredient_"+ lang]}}, {{item.selling_price}}:-, {{item.stock}} pcs
 
     </label>
@@ -50,5 +50,33 @@ getImage:function(image){
 }
 </script>
 <style scoped>
+
+.ingredient{
+  position:relative;
+}
+
+button{
+  position:absolute;
+}
+
+.incrementButton{
+width: 25%;
+left: 0;
+bottom: 0;
+margin-bottom: 1px;
+margin-left: 1px;
+border-radius: 4px;
+background-color: green;
+}
+
+.decreaseButton{
+  width:25%;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 1px;
+  margin-right: 1px;
+  border-radius: 4px;
+  background-color: yellow;
+}
 
 </style>

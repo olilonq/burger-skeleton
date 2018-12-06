@@ -218,7 +218,8 @@ export default {
 .ingredient {
   border: 1px solid #ccd;
   border-radius:10px;
-  padding: 1em;
+  width: 8em;
+  height: 8em;
   margin-right:0.5em;
   margin-left: 0.5em;
   margin-top: 0.5em;
@@ -231,7 +232,9 @@ export default {
   grid-column-start:0;
   grid-column-end:0;
   grid-row-start:2;
-  grid-row-end:5;
+  grid-row-end: 5;
+
+  margin-bottom: 5vh;
 
     width: 130px;
     position: relative;
