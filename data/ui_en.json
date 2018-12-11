@@ -15,6 +15,13 @@
   "sideorders" : "Side orders",
   "ingredients" : "Ingredients",
   "ready" : "Done",
-  "order" : "My burger",
-  "language" : "Svenska"
+  "order" : "Current order",
+  "language" : "Svenska",
+  "bread" :"Bread",
+  "protein" :"Protein",
+  "vegetable" : "Vegetable",
+  "other" : "Other",
+  "sides" : "Sides",
+  "home" : "Home",
+  "back" : "Back"
 }

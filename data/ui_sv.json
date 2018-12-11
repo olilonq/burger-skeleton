@@ -15,6 +15,13 @@
   "sideorders" : "Tillbehör",
   "ingredients" : "Ingredienser",
   "ready" : "Klart",
-  "order" : "Min burgare",
-  "language" : "English"
+  "order" : "Nuvarande order",
+  "language" : "English",
+  "bread" :"Bröd",
+  "protein" :"Protein",
+  "vegetable" : "Grönsak",
+  "other" : "Övrigt",
+  "sides" : "Tillbehör",
+  "home" : "Hem",
+  "back" : "Tillbaka"
 }
