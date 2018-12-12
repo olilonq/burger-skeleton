@@ -1,7 +1,10 @@
 <template>
 
   <div id="orders">
-    Antal 100g: {{countBeef100}}
+    Antal 100g: {{countBeef100}},
+    Antal 200g: {{countBeef200}},
+    Antal Kyckling: {{countChicken}},
+    Antal Halloumi: {{countH}}
 
 <div class="grid-d">
     <div>
@@ -114,13 +117,50 @@ export default {
       for(let order in this.orders) {
         for(let i = 0; i < this.orders[order].ingredients.length; i +=1){
           console.log(this.orders[order].ingredients[i]);
-          if (this.orders[order].ingredients[i].ingredient_id===2) {
+          if (this.orders[order].ingredients[i].ingredient_id===6) {
+            counter +=1;
+          }
+        }
+      }
+      return counter;
+    },
+    countBeef200: function(){
+      let counter = 0;
+      for(let order in this.orders) {
+        for(let i = 0; i < this.orders[order].ingredients.length; i +=1){
+          console.log(this.orders[order].ingredients[i]);
+          if (this.orders[order].ingredients[i].ingredient_id===7) {
+            counter +=1;
+          }
+        }
+      }
+      return counter;
+    },
+    countChicken: function(){
+      let counter = 0;
+      for(let order in this.orders) {
+        for(let i = 0; i < this.orders[order].ingredients.length; i +=1){
+          console.log(this.orders[order].ingredients[i]);
+          if (this.orders[order].ingredients[i].ingredient_id===8) {
+            counter +=1;
+          }
+        }
+      }
+      return counter;
+    },
+    countH: function(){
+      let counter = 0;
+      for(let order in this.orders) {
+        for(let i = 0; i < this.orders[order].ingredients.length; i +=1){
+          console.log(this.orders[order].ingredients[i]);
+          if (this.orders[order].ingredients[i].ingredient_id===9) {
             counter +=1;
           }
         }
       }
       return counter;
     }
+
   },
   methods: {
     markDone: function (orderid) {
@@ -152,12 +192,15 @@ export default {
     display: grid;
     max.width: 600px 200px 200px 200px 200px;
     width:550px;
-    height:70px;
+    height:auto;
     margin:10px;
     padding:10px;
     background: #FBDE4B;
     border-radius: 25px;
   }
+  div:empty {
+   display: none;
+}
   .grid-d{
     display: grid;
     grid-template-columns: 600px 600px;
