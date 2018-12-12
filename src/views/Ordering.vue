@@ -6,19 +6,24 @@
       <button id ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
       <h1>{{ uiLabels.ingredients }}  </h1>
     </div>
+
+
     <div class="sidenav">
 
-
-
-  <div><a href="#Bröd">Bröd</a></div>
-  <div><a href="#Protein">Protein</a></div>
-
-  <div><a href="#Grönsak">Grönsak</a></div>
-
+  <div><a href="#Bröd" v-on:click= "pageNumber===1"  >Bröd</a></div>
+  <div><a href="#Protein"  v-on:click= "pageNumber===2"     >Protein</a></div>
+  <div><a href="#Grönsak" v-on:click= "pageNumber===3"        >Grönsak</a></div>
   <div><a href="#Övrigt">Övrigt</a></div>
-
   <div><a href="#Tillbehör">Tillbehör</a></div>
+
   </div>
+
+
+  <div class="nexttosidenav">
+
+
+  </div>
+
 
     <div class="middlepanel">
       <Ingredient
@@ -159,6 +164,7 @@ export default {
 
 .middlepanel {
   position:relative;
+  grid-column: 3;
   grid-column-start:2;
   grid-column-end:4;
   grid-row-start: 2;
@@ -227,55 +233,79 @@ export default {
 
 }
 
-.sidenav {
-  grid-column-start:0;
-  grid-column-end:0;
-  grid-row-start:2;
-  grid-row-end: 5;
+#grid {
 
-  margin-bottom: 5vh;
+  display: grid;
+  height: 100px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 100px;
+  column-gap: 10px;
+
+}
+
+#grid > div{
+  border: 1px solid green;
+  background-color: lime;
+}
+
+
+
+.sidenav {
+
+  grid-row: 2;
+  grid-column: 1 / 2;
+  grid-column-end:1;
+  grid-row-strt:1;
+  grid-row-end: 5;
 
     width: 80px;
     position: relative;
     z-index: 0;
     top: 10px;
-    left: 10px;
+    left: 5px;
     overflow-x: hidden;
     padding: 8px 1;
 }
 
-.sidenav div {
+
+.nexttosidenav{
   display: flex;
+
+  grid-column: 2;
+  grid-row: 2;
+  background: #FF8C00;
+
+  border-radius: 25px;
+  position: relative;
+  top: 10px;
+  width: 80px;
+  height: 50px;
+  right:75px;
+
+}
+
+.sidenav div {
+  grid-row:2;
+
+  display: flex;
+
   align-items:center;
   justify-content: center;
   width: 60px;
   height: 60px;
   border-radius: 50px;
   background-color: #FF8C00;
+
 }
-
-/* .sidenav a {
-    padding: 100px 80px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: black;
-    display: block;
-    height: 15px;
-    width: 25px;
-    background-color: #FF8C00;
-    border-radius: 200%;
-
-  } */
-
-
 
 
 .sidenav a:hover {
     color: #064579;
+
 }
 
 .main {
-    margin-left: 240px; /* Same width as the sidebar + left position in px */
+    margin-left: 320px; /* Same width as the sidebar + left position in px */
     font-size: 28px; /* Increased text to enable scrolling */
     padding: 1px 10px;
 }
