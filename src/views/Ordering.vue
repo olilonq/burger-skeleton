@@ -10,11 +10,11 @@
 
     <div class="sidenav">
 
-  <div><a href="#Bröd" v-on:click= "pageNumber===1"  >Bröd</a></div>
-  <div><a href="#Protein"  v-on:click= "pageNumber===2"     >Protein</a></div>
-  <div><a href="#Grönsak" v-on:click= "pageNumber===3"        >Grönsak</a></div>
-  <div><a href="#Övrigt">Övrigt</a></div>
-  <div><a href="#Tillbehör">Tillbehör</a></div>
+  <div><a v-on:click= "pageNumber=1"  >Bröd</a></div>
+  <div><a v-on:click= "pageNumber=2"     >Protein</a></div>
+  <div><a v-on:click= "pageNumber=3"        >Grönsak</a></div>
+  <div><a v-on:click= "pageNumber=4">Övrigt</a></div>
+  <div><a v-on:click= "pageNumber=5">Tillbehör</a></div>
 
   </div>
 
