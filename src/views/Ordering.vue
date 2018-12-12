@@ -4,20 +4,36 @@
 
     <div class ="upperBorder">
       <button id ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
-      <h1>{{ uiLabels.ingredients }}  </h1>
+      <button id ="homeButton">{{ uiLabels.home }} </button>
+      <h1 id="siteTitle"> Hallå Halloumi! </h1>
     </div>
+
+
     <div class="sidenav">
 
+  <div><a href="#Bröd" v-on:click= "pageNumber===1"  >{{ uiLabels.bread }}</a></div>
+  <div><a href="#Protein"  v-on:click= "pageNumber===2">{{ uiLabels.protein }}</a></div>
+  <div><a href="#Grönsak" v-on:click= "pageNumber===3">{{ uiLabels.vegetable }}</a></div>
+  <div><a href="#Övrigt" v-on:click = "pageNumber===4">{{ uiLabels.other }}</a></div>
+  <div><a href="#Tillbehör" v-on:click = "pageNumber===4">{{ uiLabels.sides }}</a></div>
+
+  </div>
 
 
-  <div><a href="#Bröd">Bröd</a></div>
-  <div><a href="#Protein">Protein</a></div>
+  <div class="nexttosidenav">
+    <div><a ></a></div>
+    <div><a> </a></div>
+    <div><a ></a></div>
+    <div><a> </a></div>
+    <div><a ></a></div>
 
-  <div><a href="#Grönsak">Grönsak</a></div>
-
-  <div><a href="#Övrigt">Övrigt</a></div>
-
-  <div><a href="#Tillbehör">Tillbehör</a></div>
+  </div>
+  <div id="ingredientHeader">
+    <h1  v-if = "pageNumber===1">{{ uiLabels.bread }}</h1>
+    <h1  v-if = "pageNumber===2">{{ uiLabels.protein }}</h1>
+    <h1  v-if = "pageNumber===3">{{ uiLabels.vegetable }}</h1>
+    <h1  v-if ="pageNumber===4">{{ uiLabels.other }}</h1>
+    <h1  v-if = "pageNumber===5">{{ uiLabels.sides }}</h1>
   </div>
 
     <div class="middlepanel">
@@ -34,7 +50,7 @@
       </div>
     <div class="bottomBorder">
 
-      <h2>{{ uiLabels.order }}</h2>
+      <h2 id="currentOrder">{{ uiLabels.order }}</h2>
       {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
       <button id="orderButton" v-if="pageNumber===5" v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
       <button id="nextButton" v-if="pageNumber<5" v-on:click="nextPage()">{{ uiLabels.next }}</button>
@@ -129,10 +145,16 @@ export default {
 </script>
 <style scoped>
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
+#siteTitle {
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  color:black;
+}
 
 .ordering {
   display:grid;
-  grid-auto-rows: 8.8em;
+  grid-auto-rows: 9em;
   grid-auto-columns: 9em;
   position: relative;
 
@@ -159,11 +181,11 @@ export default {
 
 .middlepanel {
   position:relative;
+  grid-column: 3;
   grid-column-start:2;
   grid-column-end:4;
   grid-row-start: 2;
   grid-row-end:4;
-  height: 100%;
   display: grid;
   grid-template-columns: auto auto;
   grid-column-gap:auto;
@@ -175,12 +197,22 @@ export default {
 
   background-color: orange;
   width: 100%;
-  height: 20%;
+  height: 25%;
   border-color:black;
   border-top: 1px solid #ccd;
   position: fixed;
   bottom:0;
   left:0;
+
+}
+#homeButton {
+  position: absolute;
+  transition: .5s ease;
+  top: 0;
+  left: 0;
+  z-index:2;
+  height: 50%;
+  width: 12%;
 
 }
 #languageButton {
@@ -226,56 +258,119 @@ export default {
   background-size: 130px 130px;
 
 }
+#ingredientHeader {
+  display: flex;
+  align-items:center;
+  justify-content: center;
+
+  position: fixed;
+  z-index:2;
+  top:13%;
+  right: 30%;
+
+}
+#currentOrder {
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  color:black;
+
+}
+
+#grid {
+
+  display: grid;
+  height: 100px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 100px;
+  column-gap: 10px;
+
+}
+
+#grid > div{
+  border: 1px solid green;
+  background-color: lime;
+}
+
+
 
 .sidenav {
-  grid-column-start:0;
-  grid-column-end:0;
+
+  grid-row: 2;
+  grid-column: 1 / 2;
+  grid-column-end:1;
   grid-row-start:2;
   grid-row-end: 5;
-
-  margin-bottom: 5vh;
 
     width: 80px;
     position: relative;
     z-index: 0;
     top: 10px;
-    left: 10px;
     overflow-x: hidden;
     padding: 8px 1;
 }
 
-.sidenav div {
+
+.nexttosidenav{
+
+  grid-column: 2;
+  grid-column-end:2;
+  grid-row-start:2;
+  grid-row-end:5;
+  background: #FF8C00;
+
+  border-radius: 25px;
+  position: relative;
+  top: 10px;
+  width: 80px;
+  height: 50px;
+  right:80px;
+
+}
+.nexttosidenav div {
+  grid-row:2;
+  border: 1px solid black;
+
   display: flex;
+
+  align-items:center;
+  justify-content: center;
+  width: 80px;
+  height: 60px;
+  border-radius: 25px;
+  background-color: #FF8C00;
+
+}
+
+
+.nexttosidenav a:hover {
+    color: #064579;
+
+}
+
+.sidenav div {
+  grid-row:2;
+  border: 1px solid black;
+
+  display: flex;
+
   align-items:center;
   justify-content: center;
   width: 60px;
   height: 60px;
   border-radius: 50px;
   background-color: #FF8C00;
+
 }
-
-/* .sidenav a {
-    padding: 100px 80px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: black;
-    display: block;
-    height: 15px;
-    width: 25px;
-    background-color: #FF8C00;
-    border-radius: 200%;
-
-  } */
-
-
 
 
 .sidenav a:hover {
     color: #064579;
+
 }
 
 .main {
-    margin-left: 240px; /* Same width as the sidebar + left position in px */
+    margin-left: 320px; /* Same width as the sidebar + left position in px */
     font-size: 28px; /* Increased text to enable scrolling */
     padding: 1px 10px;
 }
