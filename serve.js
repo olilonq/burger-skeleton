@@ -36,10 +36,14 @@ var data = new Data();
 data.initializeData();
 
 io.on('connection', function (socket) {
+  let uiLang = "en";
   // Send list of orders and text labels when a client connects
-  socket.emit('initialize', { orders: data.getAllOrders(),
-                          uiLabels: data.getUILabels(),
-                          ingredients: data.getIngredients() });
+
+  socket.on('pageLoaded', function() {
+    socket.emit('initialize', { orders: data.getAllOrders(),
+                            uiLabels: data.getUILabels(uiLang),
+                            ingredients: data.getIngredients() });
+  });
 
   // When someone orders something
   socket.on('order', function (order) {
@@ -51,6 +55,7 @@ io.on('connection', function (socket) {
   });
   // send UI labels in the chosen language
   socket.on('switchLang', function (lang) {
+    uiLang = lang;
     socket.emit('switchLang', data.getUILabels(lang));
   });
   // when order is marked as done, send updated queue to all connected clients

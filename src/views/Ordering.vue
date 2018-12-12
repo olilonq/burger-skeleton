@@ -11,6 +11,14 @@
 
     <div class="sidenav">
 
+  <div><a v-on:click= "pageNumber=1"  >Bröd</a></div>
+  <div><a v-on:click= "pageNumber=2"     >Protein</a></div>
+  <div><a v-on:click= "pageNumber=3"        >Grönsak</a></div>
+  <div><a v-on:click= "pageNumber=4">Övrigt</a></div>
+  <div><a v-on:click= "pageNumber=5">Tillbehör</a></div>
+
+    <div class="sidenav">
+
   <div><a href="#Bröd" v-on:click= "pageNumber===1"  >{{ uiLabels.bread }}</a></div>
   <div><a href="#Protein"  v-on:click= "pageNumber===2">{{ uiLabels.protein }}</a></div>
   <div><a href="#Grönsak" v-on:click= "pageNumber===3">{{ uiLabels.vegetable }}</a></div>
@@ -35,6 +43,7 @@
     <h1  v-if ="pageNumber===4">{{ uiLabels.other }}</h1>
     <h1  v-if = "pageNumber===5">{{ uiLabels.sides }}</h1>
   </div>
+
 
     <div class="middlepanel">
       <Ingredient
@@ -276,6 +285,23 @@ export default {
   color:black;
 
 }
+
+#grid {
+
+  display: grid;
+  height: 100px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 100px;
+  column-gap: 10px;
+
+}
+
+#grid > div{
+  border: 1px solid green;
+  background-color: lime;
+}
+
+
 
 #grid {
 
