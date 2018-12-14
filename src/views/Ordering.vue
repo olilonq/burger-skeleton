@@ -7,26 +7,35 @@
       <button id ="homeButton">{{ uiLabels.home }} </button>
       <h1 id="siteTitle"> Hallå Halloumi! </h1>
     </div>
-
     <div class="sidenav">
 
-  <div><a v-on:click= "pageNumber=1"  >{{ uiLabels.bread }}</a></div>
-  <div><a v-on:click= "pageNumber=2">{{ uiLabels.protein }}</a></div>
-  <div><a v-on:click= "pageNumber=3">{{ uiLabels.vegetable }}</a></div>
-  <div><a v-on:click= "pageNumber=4">{{ uiLabels.other }}</a></div>
-  <div><a v-on:click= "pageNumber=5">{{ uiLabels.sides }}</a></div>
+      <div><a v-on:click= "pageNumber=1"  ><span>
+         {{ uiLabels.bread }} </span> </a></div>
+      <P class=”twentysixpoint”</P>
+      <div><a v-on:click= "pageNumber=2"> <span> {{ uiLabels.protein }} </span></a></div>
+      <P class=”twentysixpoint”</P>
+      <div><a v-on:click= "pageNumber=3"> <span> {{ uiLabels.vegetable }} </span> </a></div>
+      <P class=”twentysixpoint”</P>
+      <div><a v-on:click= "pageNumber=4"> <span> {{ uiLabels.other }} </span> </a></div>
+      <P class=”twentysixpoint”</P>
+      <div><a v-on:click= "pageNumber=5"> <span> {{ uiLabels.sides }} </span> </a></div>
 
-  </div>
+      </div>
 
 
-  <div class="nexttosidenav">
-    <div><a ></a></div>
-    <div><a> </a></div>
-    <div><a ></a></div>
-    <div><a> </a></div>
-    <div><a ></a></div>
+      <div class="nexttosidenav">
 
-  </div>
+        <div><a >{{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr</a></div>
+        <P class=”twentysixpoint”</P>
+        <div><a> </a></div>
+        <P class=”twentysixpoint”</P>
+        <div><a ></a></div>
+        <P class=”twentysixpoint”</P>
+        <div><a> </a></div>
+        <P class=”twentysixpoint”</P>
+        <div><a ></a></div>
+
+      </div>
   <div id="ingredientHeader">
     <h1  v-if = "pageNumber===1">{{ uiLabels.bread }}</h1>
     <h1  v-if = "pageNumber===2">{{ uiLabels.protein }}</h1>
@@ -154,7 +163,7 @@ export default {
 
 .ordering {
   display:grid;
-  grid-auto-rows: 9em;
+  grid-auto-rows: 8.8em;
   grid-auto-columns: 9em;
   position: relative;
 
@@ -174,7 +183,7 @@ export default {
   width: 100%;
   height: 15%;
   border-color:black;
-  border-bottom: 1px solid #ccd;
+  border-bottom: 1px solid black;
   top:0;
   left:0;
   }
@@ -199,7 +208,7 @@ export default {
   width: 100%;
   height: 25%;
   border-color:black;
-  border-top: 1px solid #ccd;
+  border-top: 1px solid black;
   position: fixed;
   bottom:0;
   left:0;
@@ -379,12 +388,18 @@ export default {
   background-color: #FF8C00;
 
 }
-
-
-.sidenav a:hover {
-    color: #064579;
+.sidenav span{
+  color:black;
 
 }
+
+.sidenav a:hover span{
+
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
 
 .main {
     margin-left: 320px; /* Same width as the sidebar + left position in px */
