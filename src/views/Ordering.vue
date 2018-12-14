@@ -10,20 +10,30 @@
 
     <div class="sidenav">
 
-  <div><a v-on:click= "pageNumber=1"  >{{ uiLabels.bread }}</a></div>
-  <div><a v-on:click= "pageNumber=2">{{ uiLabels.protein }}</a></div>
-  <div><a v-on:click= "pageNumber=3">{{ uiLabels.vegetable }}</a></div>
-  <div><a v-on:click= "pageNumber=4">{{ uiLabels.other }}</a></div>
-  <div><a v-on:click= "pageNumber=5">{{ uiLabels.sides }}</a></div>
+  <div><a v-on:click= "pageNumber=1"  ><span>
+     {{ uiLabels.bread }} </span> </a></div>
+  <P class=”twentysixpoint”</P>
+  <div><a v-on:click= "pageNumber=2"> <span> {{ uiLabels.protein }} </span></a></div>
+  <P class=”twentysixpoint”</P>
+  <div><a v-on:click= "pageNumber=3"> <span> {{ uiLabels.vegetable }} </span> </a></div>
+  <P class=”twentysixpoint”</P>
+  <div><a v-on:click= "pageNumber=4"> <span> {{ uiLabels.other }} </span> </a></div>
+  <P class=”twentysixpoint”</P>
+  <div><a v-on:click= "pageNumber=5"> <span> {{ uiLabels.sides }} </span> </a></div>
 
   </div>
 
 
   <div class="nexttosidenav">
-    <div><a ></a></div>
+
+    <div><a >{{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr</a></div>
+    <P class=”twentysixpoint”</P>
     <div><a> </a></div>
+    <P class=”twentysixpoint”</P>
     <div><a ></a></div>
+    <P class=”twentysixpoint”</P>
     <div><a> </a></div>
+    <P class=”twentysixpoint”</P>
     <div><a ></a></div>
 
   </div>
@@ -344,11 +354,14 @@ export default {
   right:80px;
 
 }
+
 .nexttosidenav div {
   grid-row:2;
   border: 1px solid black;
 
   display: flex;
+
+
 
   align-items:center;
   justify-content: center;
@@ -360,10 +373,7 @@ export default {
 }
 
 
-.nexttosidenav a:hover {
-    color: #064579;
 
-}
 
 .sidenav div {
   grid-row:2;
@@ -381,8 +391,22 @@ export default {
 }
 
 
+.sidenav span{
+  color:black;
+
+}
+
+.sidenav a:hover span{
+
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+
 .sidenav a:hover {
     color: #064579;
+
 
 }
 
