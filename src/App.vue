@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import Ordering from "./views/Ordering.vue"
+import Homepage from "./views/Homepage.vue"
 
 export default {
   name: 'app',
   components: {
-    Ordering
+    Homepage
   }
 }
 </script>

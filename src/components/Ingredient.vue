@@ -65,18 +65,18 @@ button{
 
 .incrementButton{
 width: 25%;
-left: 0;
+right: 0;
 bottom: 0;
 margin-bottom: 1px;
 margin-left: 1px;
 border-radius: 4px;
 background-color: green;
-  border-color: black;
+border-color: black;
 }
 
 .decreaseButton{
   width:25%;
-  right: 0;
+  left: 0;
   bottom: 0;
   margin-bottom: 1px;
   margin-right: 1px;
