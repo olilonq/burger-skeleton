@@ -2,7 +2,7 @@
   <div class="homepage">
   <div class=homepageheader>
       <h2>Welcome to</h2>
-      <h1> Crafty Burgers</h1>
+      <h1>Crafty Burgers</h1>
 
 
       <div class ="upperBorder">
@@ -11,7 +11,9 @@
       </div>
    <div class="mainBorder">
      <div class="button">
-     <button id="CraftButton" href="/ordering">Create your own burger</button>
+       <form>
+     <button id="CraftButton" formaction="/#/ordering">Create your own burger</button>
+     </form>
   </div>
   </div>
   </div>
@@ -117,6 +119,8 @@ export default {
   border-radius: 8vh;
   background-color: green;
 }
+
+
 
 
 </style>
