@@ -8,10 +8,17 @@ var sharedVueStuff = {
       uiLabels: {},
       ingredients: {},
       lang: "en",
-      StockItems: ['Bröd','Protein','Grönsaker','Övrigt','Tillbehör']
-    }
-  },
+      /*StockItems: [{cat:1, label:"Bröd"},
+            {cat:2, label:"Protein"},
+            {cat:3, label:"Grönsaker"},
+            {cat:4, label:"Övrigt"},
+            {cat:5, label:"Tillbehör"}],*/
+
+
+}
+},
   created: function () {
+    this.$store.state.socket.emit('pageLoaded');
     this.$store.state.socket.on('initialize', function (data) {
       this.orders = data.orders;
       this.uiLabels = data.uiLabels;
@@ -38,6 +45,7 @@ var sharedVueStuff = {
       }
       this.$store.state.socket.emit('switchLang', this.lang);
     }
+
   }
 };
 
