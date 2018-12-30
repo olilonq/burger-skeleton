@@ -1,10 +1,10 @@
 <template>
 
   <div id="orders">
-    Antal 100g: {{countBeef100}},
+    <!--Antal 100g: {{countBeef100}},
     Antal 200g: {{countBeef200}},
     Antal Kyckling: {{countChicken}},
-    Antal Halloumi: {{countH}}
+    Antal Halloumi: {{countH}}-->
 
 <div class="grid-d">
     <div>
@@ -13,8 +13,8 @@
       <div class="grid-c">
       <OrderItemToPrepare
         v-for="(order, key) in orders"
-        v-if="order.status !== 'done'"
-        v-on:done="markDone(key)"
+        v-if="order.status !== 'done' && order.status !== 'served'"
+        v-on:done= "markDone(key)"
         :order-id="key"
         :order="order"
         :ui-labels="uiLabels"
@@ -33,6 +33,7 @@
           <OrderItem
             v-if="order.status === 'done'"
             :order-id="key"
+            v-on:served="markServed(key)"
             :order="order"
             :lang="lang"
             :ui-labels="uiLabels">
@@ -44,10 +45,9 @@
     </div>
   </div>
   <div class="stock">
-<h3 align="center">Lagerstatus:</h3>
 
     <div style="display:flex; justify-content:space-evenly;">
-        <div v-for= "(item,key) in StockItems" class="StockItems" :key="key">
+        <div v-for= "(item,key) in StockItems" class="StockItems" :key="key" v-bind:style="{ background: item.color }">
         <h4>{{item.label}}</h4>
         </div>
 
@@ -80,7 +80,7 @@ export default {
 
   },
   computed: {
-    countBeef100: function(){
+    /*countBeef100: function(){
       let counter = 0;
       for(let order in this.orders) {
         for(let i = 0; i < this.orders[order].ingredients.length; i +=1){
@@ -127,18 +127,28 @@ export default {
         }
       }
       return counter;
-    },
-    StockItems: function() { return [{cat:1, label:"Bröd", color: this.getStock(1)},
+    },*/
+    StockItems: function () { return [{cat:1, label:"Bread", color: this.getStock(1)},
           {cat:2, label:"Protein", color: this.getStock(2)},
-          {cat:3, label:"Grönsaker", color: this.getStock(3)},
-          {cat:4, label:"Övrigt", color: this.getStock(4)},
-          {cat:5, label:"Tillbehör", color: this.getStock(5)}];
+          {cat:3, label:"Vegetables", color: this.getStock(3)},
+          {cat:4, label:"Other", color: this.getStock(4)},
+          {cat:5, label:"Sides", color: this.getStock(5)}];
         }
   },
   methods: {
+
+    markServed: function (orderid) {
+    this.$store.state.socket.emit("orderServed", orderid);
+
+    },
+
     markDone: function (orderid) {
       this.$store.state.socket.emit("orderDone", orderid);
     },
+
+    changeStock: function (item, saldo) {
+     this.$store.state.socket.emit("updateStock",(item, saldo));
+ },
 
    getStock: function (cat) {
       let status = "green"
@@ -209,7 +219,6 @@ export default {
 
   .StockItems{
     border: 1px solid black;
-    background: green;
     border-radius: 25px;
     flex-grow: 1;
     flex-shrink: 1;
