@@ -8,8 +8,8 @@
   "newOrder" : "Ny beställning",
   "pay" : "Betala",
   "sum" :"Summa",
-  "ordersFinished" : "Färdiga beställningar",
-  "ordersInQueue" : "Beställningar att förbereda",
+  "ordersFinished" : "Ordrar att servera",
+  "ordersInQueue" : "Ordrar att tillaga",
   "ordersTrending" : "Populära beställningar",
   "placeOrder" : "Beställ",
   "addToOrder" : "Lägg till i beställning",
@@ -24,5 +24,6 @@
   "other" : "Övrigt",
   "sides" : "Tillbehör",
   "home" : "Hem",
-  "back" : "Tillbaka"
+  "back" : "Tillbaka",
+  "served": "Serverad"
 }

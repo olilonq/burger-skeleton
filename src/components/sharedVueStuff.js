@@ -7,13 +7,7 @@ var sharedVueStuff = {
       orders: {},
       uiLabels: {},
       ingredients: {},
-      lang: "en",
-      /*StockItems: [{cat:1, label:"Bröd"},
-            {cat:2, label:"Protein"},
-            {cat:3, label:"Grönsaker"},
-            {cat:4, label:"Övrigt"},
-            {cat:5, label:"Tillbehör"}],*/
-
+      lang: "en"
 
 }
 },
