@@ -1,8 +1,22 @@
+
+
+
+
+
 <template>
+  <body class= "theborder">
+    <head>
+      <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+    </head>
+
+
+
+
   <div class="homepage">
   <div class=homepageheader>
-      <h2>Welcome to</h2>
-      <h1> Crafty Burgers</h1>
+
+      <h2 style="font-family:'Bree Serif', serif">  Welcome to </h2>
+      <h1 style="font-family:'Bree Serif', serif"> Crafty Burgers</h1>
 
 
       <div class ="upperBorder">
@@ -12,10 +26,56 @@
    <div class="mainBorder">
      <div class="button">
      <button id="CraftButton" href="/ordering">Create your own burger</button>
+     <div class= "bottombox">
+       <table>
+         <tr>
+           <td>
+
+
+       <div class= "boxwithin">
+
+       </div>
+     </td>
+     <td>
+       <div class ="boxwithin">
+       </div>
+     </td>
+     <td>
+
+       <div class ="boxwithin">
+       </div>
+
+     </td>
+
+     <td>
+
+       <div class ="boxwithin">
+       </div>
+
+     </td>
+
+
+
+     </tr>
+
+   </table>
+
+
+
+     </div>
+     </div>
+
   </div>
   </div>
+
   </div>
+
+  </body>
 </template>
+
+
+
+
 
 <script>
 
@@ -88,7 +148,24 @@ export default {
 </script>
 
 
+
 <style scoped>
+
+table {
+
+  border-spacing: 1em . 5em;
+  border-spacing: 1em .5em;
+ padding: 0 2em 1em 0;
+ border-radius: 1px;
+
+
+}
+
+td {
+  height: 3.5em;
+}
+
+
 
 .homepageheader{
   color: black;
@@ -117,6 +194,46 @@ export default {
   border-radius: 8vh;
   background-color: green;
 }
+
+.bottombox {
+  position: fixed;
+  top: 84%;
+  right: 20%;
+  left: 10%;
+  width: 300px;
+  height: 100px;
+  border: 1px solid gray;
+  border-radius: 25px;
+
+}
+
+.boxwithin {
+
+  position:relative;
+  top: 20%;
+  right:15%;
+  width: 55px;
+  height: 55px;
+  border: 1px solid gray;
+  border-radius: 15px;
+
+
+
+
+
+
+
+}
+
+.theborder {
+  position: fixed;
+  border:  5px solid gray;
+
+
+
+}
+
+
 
 
 </style>

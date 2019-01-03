@@ -37,13 +37,12 @@ data.initializeData();
 
 io.on('connection', function (socket) {
   let uiLang = "en";
-  // Send list of orders and text labels when a client connects
-
-  socket.on('pageLoaded', function() {
-    socket.emit('initialize', { orders: data.getAllOrders(),
-                            uiLabels: data.getUILabels(uiLang),
-                            ingredients: data.getIngredients() });
-  });
+  // Send list of orders and text labels when a client is ready
+    socket.on('pageLoaded', function() {
+      socket.emit('initialize', { orders: data.getAllOrders(),
+                                  uiLabels: data.getUILabels(),
+                                  ingredients: data.getIngredients() });
+    });
 
   // When someone orders something
   socket.on('order', function (order) {

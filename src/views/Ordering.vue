@@ -11,6 +11,7 @@
     <div class="sidenav">
 
   <div><a v-on:click= "pageNumber=1"  ><span>
+
      {{ uiLabels.bread }} </span> </a></div>
   <P class=”twentysixpoint”</P>
   <div><a v-on:click= "pageNumber=2"> <span> {{ uiLabels.protein }} </span></a></div>
@@ -24,9 +25,45 @@
   </div>
 
 
+  <div class= "img">
+
+
+
+
+    <div >
+      <img src="https://img.icons8.com/ios/1600/down.png"  width="30">
+      </div>
+
+    </div>
+
+    <div class= "img2">
+
+      <div >
+        <img src="https://img.icons8.com/ios/1600/down.png"  width="30">
+        </div>
+      </div>
+
+      <div class= "img3">
+
+        <div >
+          <img src="https://img.icons8.com/ios/1600/down.png"  width="30">
+          </div>
+        </div>
+
+        <div class= "img4">
+
+          <div >
+            <img src="https://img.icons8.com/ios/1600/down.png"  width="30">
+            </div>
+          </div>
+
+
+
+
+
   <div class="nexttosidenav">
 
-    <div><a >{{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr</a></div>
+    <div><a >{{ chosenIngredients.map(item => item["ingredient_"+lang]).join(' ') }}</a></div>
     <P class=”twentysixpoint”</P>
     <div><a> </a></div>
     <P class=”twentysixpoint”</P>
@@ -61,7 +98,11 @@
     <div class="bottomBorder">
 
       <h2 id="currentOrder">{{ uiLabels.order }}</h2>
-      {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
+      {{ burgersInOrder() }}
+    <hr>
+    {{ currentBurger() }}, {{ price }} kr
+    <button v-on:click="addBurger()">{{ uiLabels.addToOrder }}</button>
+    <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
       <button id="orderButton" v-if="pageNumber===5" v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
       <button id="nextButton" v-if="pageNumber<5" v-on:click="nextPage()">{{ uiLabels.next }}</button>
       <button id="backButton" v-on:click="previousPage()">Back</button>
@@ -106,6 +147,7 @@ export default {
       price: 0,
       orderNumber: "",
       pageNumber:1,
+      burgerCount: 1
     }
   },
   created: function () {
@@ -113,7 +155,37 @@ export default {
       this.orderNumber = data;
     }.bind(this));
   },
-  methods: {
+
+methods: {
+  addBurger: function () {
+  for (let i = 0; i < this.chosenIngredients.length; i += 1) {
+    if (typeof this.chosenIngredients[i].burgerCount === 'undefined') {
+      this.$set(this.chosenIngredients[i], 'burgerCount', this.burgerCount);
+    }
+  }
+  this.burgerCount += 1;
+  this.clearIngredients();
+},
+currentBurger: function () {
+  return this.chosenIngredients.map(function (item) {
+    if (typeof item.burgerCount === 'undefined') {
+      return item["ingredient_" + this.lang];
+    }
+  }.bind(this)).join(', ');
+},
+burgersInOrder: function () {
+  return this.chosenIngredients.map(function (item) {
+    if (typeof item.burgerCount !== 'undefined') {
+      return item.burgerCount + ": " + item["ingredient_" + this.lang];
+    }
+  }.bind(this)).join(', ');
+},
+clearIngredients: function () {
+  //set all counters to 0. Notice the use of $refs
+  for (let i = 0; i < this.$refs.ingredient.length; i += 1) {
+    this.$refs.ingredient[i].resetCounter();
+  }
+},
     addToOrder: function (item) {
       this.chosenIngredients.push(item);
       this.price += +item.selling_price;
@@ -124,18 +196,17 @@ export default {
       this.price -= item.selling_price;
     },
     placeOrder: function () {
-      var i,
+
       //Wrap the order in an object
-        order = {
+      let order = {
+
           ingredients: this.chosenIngredients,
           price: this.price
         };
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       this.$store.state.socket.emit('order', {order: order});
       //set all counters to 0. Notice the use of $refs
-      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
-        this.$refs.ingredient[i].resetCounter();
-      }
+      this.clearIngredients();
       this.price = 0;
       this.chosenIngredients = [];
     },
@@ -161,6 +232,37 @@ export default {
   justify-content: center;
   color:black;
 }
+
+.img {
+  position: absolute;
+  left: 15px;
+  top: 207px;
+  z-index: -1;
+}
+
+.img2 {
+  position: absolute;
+  left: 15px;
+  top: 285px;
+  z-index: -1;
+
+}
+
+.img3 {
+  position: absolute;
+  left: 15px;
+  top: 363px;
+  z-index: -1;
+}
+
+.img4 {
+  position: absolute;
+  left: 15px;
+  top: 441px;
+  z-index: -1;
+}
+
+
 
 .ordering {
   display:grid;
@@ -318,6 +420,7 @@ export default {
   border: 1px solid green;
   background-color: lime;
 }
+
 
 
 

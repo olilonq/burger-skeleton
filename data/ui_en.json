@@ -13,6 +13,7 @@
   "ordersTrending" : "Trending orders",
   "placeOrder" : "Place order",
   "sideorders" : "Side orders",
+  "addToOrder" : "Add to order",
   "ingredients" : "Ingredients",
   "ready" : "Done",
   "order" : "Current order",
@@ -24,4 +25,6 @@
   "sides" : "Sides",
   "home" : "Home",
   "back" : "Back"
+
+
 }
