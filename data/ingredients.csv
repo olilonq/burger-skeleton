@@ -1,11 +1,11 @@
 ingredient_id,ingredient_sv,ingredient_en,category,milk_free,gluten_free,vegan,selling_price,image
-1,brioche,brioche,1,0,0,0,10,burger.jpg
-2,glutenfritt bröd,gluten free bread,1,1,1,1,10,burger.jpg
-3,veganskt bröd,vegan bun,1,0,0,1,10,burger.jpg
-4,fullkornsbrioche,whole wheat brioche,1,0,0,0,10,wwb.jpg
-5,bönburgare,bean patty,2,1,1,1,40,bean.jpg
-6,nötfärsburgare 100g,beef patty 100g,2,1,1,0,40,beef.jpg
-7,nötfärsburgare 200g,beef patty 200g,2,1,1,0,60,beef2.jpg
+1,Brioche,Brioche,1,0,0,0,10,burger.jpg
+2,Glutenfritt bröd,Gluten free bread,1,1,1,1,10,burger.jpg
+3,Veganskt bröd,Vegan bun,1,0,0,1,10,burger.jpg
+4,Fullkornsbrioche,Whole wheat brioche,1,0,0,0,10,wwb.jpg
+5,Bönburgare,Bean patty,2,1,1,1,40,bean.jpg
+6,Nötfärsburgare 100g,Beef patty 100g,2,1,1,0,40,beef.jpg
+7,Nötfärsburgare 200g,Beef patty 200g,2,1,1,0,60,beef2.jpg
 8,kycklingburgare,chicken patty,2,1,0,0,40,chi.jpg
 9,friterad halloumi,deep-fried halloumi,2,0,0,0,40,halloumi.jpg
 10,fiskfilé,fish filet,2,1,0,0,40,fish.jpg

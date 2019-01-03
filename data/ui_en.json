@@ -8,8 +8,8 @@
   "newOrder" : "New Order",
   "pay" : "Pay",
   "sum": "Sum",
-  "ordersFinished" : "Finished orders",
-  "ordersInQueue" : "Order queue",
+  "ordersFinished" : "Orders to serve",
+  "ordersInQueue" : "Orders to prepare",
   "ordersTrending" : "Trending orders",
   "placeOrder" : "Place order",
   "sideorders" : "Side orders",
@@ -23,5 +23,6 @@
   "other" : "Other",
   "sides" : "Sides",
   "home" : "Home",
-  "back" : "Back"
+  "back" : "Back",
+  "served": "Served"
 }

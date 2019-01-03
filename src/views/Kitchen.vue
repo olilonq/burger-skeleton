@@ -1,6 +1,7 @@
 <template>
 
   <div id="orders">
+    <button id ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
     <!--Antal 100g: {{countBeef100}},
     Antal 200g: {{countBeef200}},
     Antal Kyckling: {{countChicken}},
@@ -128,11 +129,12 @@ export default {
       }
       return counter;
     },*/
-    StockItems: function () { return [{cat:1, label:"Bread", color: this.getStock(1)},
-          {cat:2, label:"Protein", color: this.getStock(2)},
-          {cat:3, label:"Vegetables", color: this.getStock(3)},
-          {cat:4, label:"Other", color: this.getStock(4)},
-          {cat:5, label:"Sides", color: this.getStock(5)}];
+
+    StockItems: function () { return [{cat:1, label: this.uiLabels.bread, color: this.getStock(1)},
+          {cat:2, label:this.uiLabels.protein, color: this.getStock(2)},
+          {cat:3, label:this.uiLabels.vegetable, color: this.getStock(3)},
+          {cat:4, label:this.uiLabels.other, color: this.getStock(4)},
+          {cat:5, label:this.uiLabels.sides, color: this.getStock(5)}];
         }
   },
   methods: {
@@ -186,6 +188,16 @@ export default {
   border-radius: 25px;
   background:#c00;
 }
+
+  #languageButton {
+    position: absolute;
+    transition: .5s ease;
+    top: 0;
+    right: 0;
+
+  }
+
+
 
   h1 {
     text-transform: uppercase;

@@ -7,7 +7,7 @@
 
 	</div>
 	<button v-if= "order.status === 'done'" v-on:click="orderServed">
-		Served
+		{{uiLabels.served}}
 	</button>
 </div>
 </template>
