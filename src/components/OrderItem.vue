@@ -6,7 +6,7 @@
 		{{orderId}} {{order.type}} : {{ order.ingredients.map(item=>item["ingredient_"+ lang]).join(", ") }}
 
 	</div>
-	<button v-if= "order.status === 'done'" v-on:click="orderServed">
+	<button style="height: 50px; text-align:center; padding: 0px; width: 70px; border-radius: 50%; float: right;" v-if= "order.status === 'done'" v-on:click="orderServed">
 		{{uiLabels.served}}
 	</button>
 </div>
@@ -31,5 +31,6 @@ export default {
 }
 </script>
 <style scoped>
+
 
 </style>
