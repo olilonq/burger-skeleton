@@ -1,6 +1,5 @@
 <template>
   <div class="ordering">
-    <img class="example-panel" src="@/assets/exampleImage.jpg">
 
     <div class ="upperBorder">
       <button id ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
@@ -78,7 +77,7 @@
     <h1  v-if = "pageNumber===1">{{ uiLabels.bread }}</h1>
     <h1  v-if = "pageNumber===2">{{ uiLabels.protein }}</h1>
     <h1  v-if = "pageNumber===3">{{ uiLabels.vegetable }}</h1>
-    <h1  v-if ="pageNumber===4">{{ uiLabels.other }}</h1>
+    <h1  v-if = "pageNumber===4">{{ uiLabels.other }}</h1>
     <h1  v-if = "pageNumber===5">{{ uiLabels.sides }}</h1>
   </div>
 
@@ -219,8 +218,7 @@ clearIngredients: function () {
     previousPage: function () {
       if(this.pageNumber > 1){
         this.pageNumber -=1
-      }
-    }
+      }}
   }
 }
 </script>
@@ -235,50 +233,41 @@ clearIngredients: function () {
 
 .img {
   position: absolute;
-  left: 15px;
-  top: 207px;
+  left: 2em;
+  top: 11.9em;
   z-index: -1;
 }
 
 .img2 {
   position: absolute;
-  left: 15px;
-  top: 285px;
+  left: 2em;
+  top: 16.5em;
   z-index: -1;
 
 }
 
 .img3 {
   position: absolute;
-  left: 15px;
-  top: 363px;
+  left: 2em;
+  top: 21.1em;
   z-index: -1;
 }
 
 .img4 {
   position: absolute;
-  left: 15px;
-  top: 441px;
-  z-index: -1;
+  left: 2em;
+  top: 25.7em;
+  z-index: -2;
 }
 
 
 
 .ordering {
   display:grid;
-  grid-auto-rows: 9em;
-  grid-auto-columns: 9em;
-  position: relative;
+  position: flex;
 
 
 }
-.example-panel {
-   position: fixed;
-   left:0;
-   top:0;
-   z-index: -2;
-
- }
 
 .upperBorder {
   position:fixed;
@@ -292,21 +281,22 @@ clearIngredients: function () {
   }
 
 .middlepanel {
-  position:relative;
-  grid-column: 3;
-  grid-column-start:2;
-  grid-column-end:4;
-  grid-row-start: 2;
-  grid-row-end:4;
-  display: grid;
+  position: fixed;
+  margin-top: 35%;
+  margin-left: 50%;
+  height: 40%;
+  width: 40%;
+
+  display:grid;
   grid-template-columns: auto auto;
-  grid-column-gap:auto;
+
   overflow-y: scroll;
   overflow-x: hidden;
 
 }
-.bottomBorder {
 
+
+.bottomBorder {
   background-color: orange;
   width: 100%;
   height: 25%;
@@ -364,21 +354,20 @@ clearIngredients: function () {
   border-radius:10px;
   width: 8em;
   height: 8em;
-  margin-top: 0.5em;
   margin-left: 0.5em;
+  margin-bottom:0.5em;
   color: black;
-  background-size: 130px 130px;
+  background-size: 8em 8em;
 
 }
 #ingredientHeader {
-  display: flex;
   align-items:center;
   justify-content: center;
 
   position: fixed;
   z-index:2;
-  top:13%;
-  right: 30%;
+  top:12%;
+  right: 17%;
 
 }
 #currentOrder {
@@ -421,73 +410,51 @@ clearIngredients: function () {
   background-color: lime;
 }
 
-
-
-
 .sidenav {
-
-  grid-row: 2;
-  grid-column: 1 / 2;
-  grid-column-end:1;
-  grid-row-start:2;
-  grid-row-end: 5;
+  position: fixed;
+  margin-top: 35%;
 
     width: 80px;
-    position: relative;
     z-index: 0;
     top: 10px;
-    overflow-x: hidden;
-    padding: 8px 1;
+    padding: 2px 1;
 }
 
 
 .nexttosidenav{
 
-  grid-column: 2;
-  grid-column-end:2;
-  grid-row-start:2;
-  grid-row-end:5;
-  background: #FF8C00;
+  position: fixed;
+  margin-top: 35%;
 
-  border-radius: 25px;
-  position: relative;
-  top: 10px;
-  width: 80px;
-  height: 50px;
-  right:80px;
+    z-index: -1;
+    top: 10px;
+    padding: 2px 1;
 
 }
 
 .nexttosidenav div {
-  grid-row:2;
   border: 1px solid black;
-
   display: flex;
-
-
-
   align-items:center;
   justify-content: center;
-  width: 80px;
-  height: 60px;
+  width: 5em;
+  height: 3.5em;
   border-radius: 25px;
   background-color: #FF8C00;
+  margin-left: 80px;
 
 }
 
-
-
-
 .sidenav div {
-  grid-row:2;
   border: 1px solid black;
 
   display: flex;
 
   align-items:center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
+  width: 3.5em;
+  height: 3.5em;
+  margin-left: 10px;
   border-radius: 50px;
   background-color: #FF8C00;
 
@@ -518,8 +485,51 @@ clearIngredients: function () {
     font-size: 28px; /* Increased text to enable scrolling */
     padding: 1px 10px;
 }
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+@media screen and (min-height: 900px) and ( min-width: 700px) {
+  #ingredientHeader {
+    top:14%;
+    right: 27%;
+  }
+  .ingredient {
+    width: 15em;
+    height: 15em;
+    background-size: 15em 15em;
+
+  }
+  .middlepanel {
+
+    margin-left: 33%;
+    margin-top: 25%;
+    height: 48.5%;
+    width: 65%;
+
+  }
+  .sidenav {
+    margin-top: 25%;
+
+    width: 10em;
+    }
+  .sidenav div {
+
+    width: 5em;
+    height: 5em;
+  }
+  .nexttosidenav {
+    width: 10em;
+    margin-top: 25%;
+
+  }
+  .nexttosidenav div {
+    width: 8em;
+    height: 5em;
+    margin-left: 7em;
+  }
+}
+@media screen and (max-width: 500px) {
+  .middlepanel {
+  grid-template-columns: auto;
+
+}
+
 }
 </style>
