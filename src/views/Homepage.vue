@@ -25,7 +25,7 @@
       </div>
    <div class="mainBorder">
      <div class="button">
-     <button id="CraftButton" href="/ordering">Create your own burger</button>
+     <button id="CraftButton" href="/ordering">Create your own burger<img src="http://thinkingstiff.com/images/matt.jpg"></button>
      <div class= "bottombox">
        <table>
          <tr>
@@ -199,43 +199,10 @@ td {
   background-color: green;
 }
 
-.bottombox {
-  position: fixed;
-  top: 84%;
-  right: 20%;
-  left: 10%;
-  width: 300px;
-  height: 100px;
-  border: 1px solid gray;
-  border-radius: 25px;
-
-}
-
-.boxwithin {
-
-  position:relative;
-  top: 20%;
-  right:15%;
-  width: 55px;
-  height: 55px;
-  border: 1px solid gray;
-  border-radius: 15px;
 
 
 
 
-
-
-
-}
-
-.theborder {
-  position: fixed;
-  border:  5px solid gray;
-
-
-
-}
 
 
 

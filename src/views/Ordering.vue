@@ -3,8 +3,12 @@
 
     <div class ="upperBorder">
       <button id ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
-      <button id ="homeButton">{{ uiLabels.home }} </button>
-      <h1 id="siteTitle"> Hallå Halloumi! </h1>
+      <form >
+        <input type="image" src="https://thumbs.gfycat.com/BigheartedRepulsiveIndianelephant-small.gif"  width="48" height="48" formaction="/#/">
+      </form>
+
+
+      <h1 id="siteTitle"> </h1>
     </div>
 
     <div class="sidenav">
@@ -22,6 +26,8 @@
   <div><a v-on:click= "pageNumber=5"> <span> {{ uiLabels.sides }} </span> </a></div>
 
   </div>
+
+
 
 
   <div class= "img">
@@ -58,7 +64,9 @@
 
 
 
+<div class= "v1">
 
+</div>
 
   <div class="nexttosidenav">
 
@@ -257,6 +265,16 @@ clearIngredients: function () {
   position: absolute;
   left: 2em;
   top: 25.7em;
+  z-index: -2;
+}
+
+.v1 {
+  border-left: 1px solid gray;
+  height: 700px;
+
+  position: absolute;
+  left: 11em;
+  top: 5em;
   z-index: -2;
 }
 
