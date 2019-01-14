@@ -23,7 +23,6 @@
    <div class="mainBorder">
      <div class="button">
      <button id="CraftButton" href="/ordering">Create your own burger<img src="http://thinkingstiff.com/images/matt.jpg"></button>
-     <button id= "fastorderbutton" v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
 </div>
      <form>
    <button id="CraftButton" formaction="/#/ordering">Create your own burger</button>
@@ -43,6 +42,8 @@
      </div>
 
   </div>
+
+     <button id= "fastorderbutton" v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
 
 
   </body>
@@ -118,7 +119,7 @@ burgerCounter: function () {
 clearIngredients: function () {
   //set all counters to 0. Notice the use of $refs
   for (let i = 0; i < this.$refs.ingredient.length; i += 1) {
-    this.$refs.ingredient[i].resetCounter();
+    this.$refs.ingredient[i];
   }
 },
 
@@ -140,8 +141,9 @@ clearIngredients: function () {
         this.price -= item.selling_price;
       }
     },
-    
+
     placeOrder: function () {
+      if(this.chosenIngredients.length > 0){
       var i,
       //Wrap the order in an object
         order = {
@@ -152,10 +154,11 @@ clearIngredients: function () {
       this.$store.state.socket.emit('order', {order: order});
       //set all counters to 0. Notice the use of $refs
       for (i = 0; i < this.$refs.ingredient.length; i += 1) {
-        this.$refs.ingredient[i].resetCounter();
+        this.$refs.ingredient[i];
       }
       this.price = 0;
       this.chosenIngredients = [];
+    }
     },
     nextPage: function () {
       if(this.pageNumber < 5){
@@ -183,12 +186,12 @@ clearIngredients: function () {
 
 #fastorderbutton{
 
-  position: relative;
-  margin-top: 93%;
-  margin-right:45%;
-  margin-left: 55%;
-  height: 40%;
-  width: 30%;
+  position: fixed;
+  top:92%;
+  left:37.5%;
+  height: 5%;
+  width: 25%;
+
 
 }
 

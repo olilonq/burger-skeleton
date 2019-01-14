@@ -19,6 +19,9 @@
       </div>
 
 
+      <div
+
+
 
 
     </div>
@@ -32,7 +35,7 @@
 
 <script>
 
-import Ingredient from '@/components/Ingredient.vue'
+
 import OrderItem from '@/components/OrderItem.vue'
 import sharedVueStuff from '@/components/sharedVueStuff.js'
 
