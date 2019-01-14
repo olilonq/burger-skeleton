@@ -5,9 +5,6 @@
       <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
     </head>
 
-
-
-
   <div class="homepage">
   <div class="homepageheader">
 
@@ -249,43 +246,6 @@ clearIngredients: function () {
   background-color: green;
 }
 
-<<<<<<< HEAD
-.bottombox {
-  position: fixed;
-  top: 84%;
-  right: 20%;
-  left: 10%;
-  width: 80%;
-  height: 15%;
-  border: 1px solid gray;
-  border-radius: 25px;
-
-}
-
-.boxwithin {
-
-  position:relative;
-  top: 20%;
-  right:15%;
-  width: 55px;
-  height: 55px;
-  border: 1px solid gray;
-  border-radius: 15px;
-}
-
-.theborder {
-  position: relative;
-  border:  5px solid gray;
-
-
-
-}
-=======
-
-
-
-
->>>>>>> 584ce18eddd782f772549231d1ad95a06fe769ae
 @media screen and (min-height: 900px) and ( min-width: 700px) {
   .homepageheader {
     font-size: 6vw;
@@ -294,23 +254,10 @@ clearIngredients: function () {
     top: 1.2%;
     right: 2.5%;
 
-<<<<<<< HEAD
-  }
-  .boxwithin {
-    width: 110px;
-    height: 110px;
-    right: 10%;
-    left:40%
-=======
->>>>>>> 584ce18eddd782f772549231d1ad95a06fe769ae
 
 }
 
 }
-
-
-
-
 
 
 </style>
