@@ -32,7 +32,18 @@ let router = new Router({
       },
       name: 'homepage',
       component: () => import('./views/Homepage.vue')
+    },
+
+
+    {
+      path: '/payment',
+      meta: {
+        title: 'Kraft Burgers',
+      },
+      name: 'payment',
+      component: () => import('./views/Payment.vue')
     }
+
   ]
 })
 

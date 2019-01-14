@@ -25,5 +25,7 @@
   "sides" : "Sides",
   "home" : "Home",
   "back" : "Back",
-  "served": "Served"
+  "served": "Served",
+  "payment":"Payment"
+
 }

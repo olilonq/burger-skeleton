@@ -25,5 +25,6 @@
   "sides" : "Tillbehör",
   "home" : "Hem",
   "back" : "Tillbaka",
-  "served": "Serverad"
+  "served": "Serverad",
+  "payment":"Betalning"
 }
