@@ -3,15 +3,15 @@
 
     <div class ="upperBorder">
       <button id ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
-      <button id ="homeButton">{{ uiLabels.home }} </button>
+      <router-link to = "/#/ordering">
+        <button id="homeButton">Home</button>
+      </router-link>
       <h1 id="siteTitle"> Hallå Halloumi! </h1>
     </div>
 
     <div class="sidenav">
 
-  <div><a v-on:click= "pageNumber=1"  ><span>
-
-     {{ uiLabels.bread }} </span> </a></div>
+  <div><a v-on:click= "pageNumber=1"> <span> {{ uiLabels.bread }} </span> </a></div>
   <P class=”twentysixpoint”</P>
   <div><a v-on:click= "pageNumber=2"> <span> {{ uiLabels.protein }} </span></a></div>
   <P class=”twentysixpoint”</P>
@@ -101,7 +101,6 @@
     <hr>
     {{ currentBurger() }}, {{ price }} kr
     <button v-on:click="addBurger()">{{ uiLabels.addToOrder }}</button>
-    <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
       <button id="orderButton" v-if="pageNumber===5" v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
       <button id="nextButton" v-if="pageNumber<5" v-on:click="nextPage()">{{ uiLabels.next }}</button>
       <button id="backButton" v-on:click="previousPage()">Back</button>
@@ -147,6 +146,7 @@ export default {
       orderNumber: "",
       pageNumber:1,
       burgerCount: 1
+
     }
   },
   created: function () {
@@ -177,8 +177,17 @@ burgersInOrder: function () {
     if (typeof item.burgerCount !== 'undefined') {
       return item.burgerCount + ": " + item["ingredient_" + this.lang];
     }
-  }.bind(this)).join(', ');
+  }.bind(this)).join(' ');
 },
+
+burgerCounter: function () {
+  return this.chosenIngredients.map(function (item) {
+    if (typeof item.burgerCount === 'undefined') {
+      return item["ingredient_" + this.lang];
+    }
+  }.bind(this));
+},
+
 clearIngredients: function () {
   //set all counters to 0. Notice the use of $refs
   for (let i = 0; i < this.$refs.ingredient.length; i += 1) {
@@ -191,8 +200,10 @@ clearIngredients: function () {
     },
 
     removeFromOrder: function(item){
-      this.chosenIngredients.splice(item,1);
-      this.price -= item.selling_price;
+      if(this.price > 0){
+        this.chosenIngredients.splice(item,1);
+        this.price -= item.selling_price;
+      }
     },
     placeOrder: function () {
 
