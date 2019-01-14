@@ -17,7 +17,7 @@ export default {
 
 <style>
 body {
-  height:100vh;
+  height:80vh;
   background: #fbe2a4;
   background-size: 200% 200%;
   animation: Gradient 20s linear infinite;
