@@ -3,25 +3,31 @@
 
     <div class ="upperBorder">
       <button id ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
-      <router-link to = "/#/ordering">
-        <button id="homeButton">Home</button>
-      </router-link>
-      <h1 id="siteTitle"> Hallå Halloumi! </h1>
+      <form >
+        <input type="image" src="https://thumbs.gfycat.com/BigheartedRepulsiveIndianelephant-small.gif"  width="48" height="48" formaction="/#/">
+      </form>
+
+
+      <h1 id="siteTitle"> </h1>
     </div>
 
     <div class="sidenav">
 
-  <div><a v-on:click= "pageNumber=1"> <span> {{ uiLabels.bread }} </span> </a></div>
-  <P class=”twentysixpoint”</P>
+  <div><a v-on:click= "pageNumber=1"  ><span>
+
+     {{ uiLabels.bread }} </span> </a></div>
+  <P class=”twentysixpoint”></P>
   <div><a v-on:click= "pageNumber=2"> <span> {{ uiLabels.protein }} </span></a></div>
-  <P class=”twentysixpoint”</P>
+  <P class=”twentysixpoint”></P>
   <div><a v-on:click= "pageNumber=3"> <span> {{ uiLabels.vegetable }} </span> </a></div>
-  <P class=”twentysixpoint”</P>
+  <P class=”twentysixpoint”></P>
   <div><a v-on:click= "pageNumber=4"> <span> {{ uiLabels.other }} </span> </a></div>
-  <P class=”twentysixpoint”</P>
+  <P class=”twentysixpoint”></P>
   <div><a v-on:click= "pageNumber=5"> <span> {{ uiLabels.sides }} </span> </a></div>
 
   </div>
+
+
 
 
   <div class= "img">
@@ -58,19 +64,21 @@
 
 
 
+<div class= "v1">
 
+</div>
 
   <div class="nexttosidenav">
 
-    <div><a >{{ chosenIngredients.map(item => item["ingredient_"+lang]).join(' ') }}</a></div>
-    <P class=”twentysixpoint”</P>
-    <div><a> </a></div>
-    <P class=”twentysixpoint”</P>
-    <div><a ></a></div>
-    <P class=”twentysixpoint”</P>
-    <div><a> </a></div>
-    <P class=”twentysixpoint”</P>
-    <div><a ></a></div>
+    <div><a v-if ="pageNumber===1" >{{ chosenIngredients.map(item => item["ingredient_"+lang]).join('\n') }}</a></div>
+    <P class=”twentysixpoint”></P>
+    <div><a v-if ="pageNumber === 2"> {{ chosenIngredients.map(item => item["ingredient_"+lang]).join('\n') }}</a></div>
+    <P class=”twentysixpoint”></P>
+    <div><a v-if ="pageNumber ===3">{{ chosenIngredients.map(item => item["ingredient_"+lang]).join('\n') }}</a></div>
+    <P class=”twentysixpoint”></P>
+    <div><a v-if ="pageNumber ===4"> {{ chosenIngredients.map(item => item["ingredient_"+lang]).join('\n') }}</a></div>
+    <P class=”twentysixpoint”></P>
+    <div><a v-if ="pageNumber ===5">{{ chosenIngredients.map(item => item["ingredient_"+lang]).join('\n') }}</a></div>
 
   </div>
   <div id="ingredientHeader">
@@ -140,6 +148,7 @@ export default {
   mixins: [sharedVueStuff], // include stuff that is used in both
                             // the ordering system and the kitchen
   data: function() { //Not that data is a function!
+
     return {
       chosenIngredients: [],
       price: 0,
@@ -234,6 +243,9 @@ clearIngredients: function () {
 }
 </script>
 <style scoped>
+.firstDiv {
+  background-color: blue;
+}
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
 #siteTitle {
   display: flex;
@@ -268,6 +280,16 @@ clearIngredients: function () {
   position: absolute;
   left: 2em;
   top: 25.7em;
+  z-index: -2;
+}
+
+.v1 {
+  border-left: 1px solid gray;
+  height: 700px;
+
+  position: absolute;
+  left: 11em;
+  top: 5em;
   z-index: -2;
 }
 
@@ -426,7 +448,7 @@ clearIngredients: function () {
   margin-top: 35%;
 
     width: 80px;
-    z-index: 0;
+    z-index: 1;
     top: 10px;
     padding: 2px 1;
 }
@@ -437,7 +459,7 @@ clearIngredients: function () {
   position: fixed;
   margin-top: 35%;
 
-    z-index: -1;
+    z-index: 0;
     top: 10px;
     padding: 2px 1;
 
@@ -445,6 +467,7 @@ clearIngredients: function () {
 
 .nexttosidenav div {
   border: 1px solid black;
+  overflow-y:scroll;
   display: flex;
   align-items:center;
   justify-content: center;
@@ -467,36 +490,28 @@ clearIngredients: function () {
   height: 3.5em;
   margin-left: 10px;
   border-radius: 50px;
-  background-color: #FF8C00;
+  background-color:  #FF8C00;
 
 }
-
 
 .sidenav span{
   color:black;
 
+
 }
 
-.sidenav a:hover span{
+.sidenav span:hover {
 
   font-weight: bold;
   cursor: pointer;
+  color: #064579;
 }
-
-
-
-.sidenav a:hover {
-    color: #064579;
-
-
-}
-
 .main {
     margin-left: 320px; /* Same width as the sidebar + left position in px */
     font-size: 28px; /* Increased text to enable scrolling */
     padding: 1px 10px;
 }
-@media screen and (min-height: 900px) and ( min-width: 700px) {
+@media screen and (min-height: 900px) and ( min-width: 700px)  {
   #ingredientHeader {
     top:14%;
     right: 27%;
@@ -535,12 +550,29 @@ clearIngredients: function () {
     height: 5em;
     margin-left: 7em;
   }
+  .img {
+    left: 2.7em;
+    top: 17.4em;
+  }
+  .img2 {
+    left: 2.7em;
+    top: 23.5em;
+  }
+  .img3 {
+    left:2.7em;
+    top:29.6em;
+  }
+  .img4 {
+    left:2.7em;
+    top: 35.7em;
+  }
 }
 @media screen and (max-width: 500px) {
   .middlepanel {
   grid-template-columns: auto;
 
 }
+
 
 }
 </style>

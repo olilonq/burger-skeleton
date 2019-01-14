@@ -7,7 +7,7 @@
       {{item["ingredient_"+ lang]}}, {{item.selling_price}}:-
       </div>
       <div class="ingredient_amount">
-        {{counter}}
+        {{getCounter(this.$parent.burgerCounter(),item["ingredient_"+ lang])}}
       </div>
     </label>
 
@@ -18,38 +18,38 @@ export default {
   name: 'Ingredient',
   props: {
     item: Object,
-    lang: String
+    lang: String,
   },
     data: function () {
     return {
-      counter: 0
     };
   },
   methods: {
     incrementCounter: function () {
-      if(this.item.stock > this.counter){
-      this.counter += 1;
-      // sending 'increment' message to parent component or view so that it
-      // can catch it with v-on:increment in the component declaration
       this.$emit('increment');
-  }
-},
+  },
+
 getImage:function(image){
-  if (image !== "") {
+  if(image !== "") {
     let img =require('../assets/' + image);
     return img;
   }
   else return require('../assets/nopic.jpg');
 },
-    decreaseCounter: function(){
-      if(this.counter > 0){
-      this.counter -= 1;
+
+getCounter: function(burgerCounter,name){
+  var counter = 0
+  for (var i = 0; i < burgerCounter.length; i++){
+    if (burgerCounter[i] === name){
+      counter++;
+    }
+  }
+  return counter;
+},
+
+  decreaseCounter: function(){
       this.$emit("decrease");
-    }
   },
-    resetCounter: function () {
-      this.counter = 0;
-    }
   }
 }
 </script>
