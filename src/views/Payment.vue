@@ -9,7 +9,7 @@
     <div id="top"></div>
     <div id="bottom"></div>
 
-    <form id= homeButton>
+    <form id= "homeButton">
       <input type="image" src="https://thumbs.gfycat.com/BigheartedRepulsiveIndianelephant-small.gif"  width="48" height="48" formaction="/#/">
     </form>
 
@@ -26,7 +26,7 @@
       </div>
 
 
-      <form id= paymentButton>
+      <form id= "paymentButton">
         <div>
           <h3 style="text-align: center; font-family:'Bree Serif'"> {{uiLabels.clickToPay}}  </h3>
         </div>
@@ -239,7 +239,16 @@ clearIngredients: function () {
 
   }
 
+@media screen and (min-height: 900px) and ( min-width: 700px)  {
 
+  #paymentButton {
+    align-items:center;
+    justify-content: center;
+
+    top: 40%;
+    left: 36.5%;
+  }
+}
 
 
 
