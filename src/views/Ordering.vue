@@ -13,22 +13,27 @@
 
     <div class="sidenav">
 
+  <div class ="sidenav a" v-if ="pageNumber===1"><a >{{ uiLabels.bread }}</a></div>
   <div><a v-on:click= "pageNumber=1"  ><span>
 
      {{ uiLabels.bread }} </span> </a></div>
+
   <P class=”twentysixpoint”></P>
+  <div class ="sidenav b" v-if ="pageNumber===2"><a >{{ uiLabels.protein }}</a></div>
   <div><a v-on:click= "pageNumber=2"> <span> {{ uiLabels.protein }} </span></a></div>
   <P class=”twentysixpoint”></P>
+  <div class ="sidenav c" v-if ="pageNumber===3"><a >{{ uiLabels.vegetable }}</a></div>
+
   <div><a v-on:click= "pageNumber=3"> <span> {{ uiLabels.vegetable }} </span> </a></div>
   <P class=”twentysixpoint”></P>
+  <div class ="sidenav d" v-if ="pageNumber===4"><a >{{ uiLabels.other }}</a></div>
+
   <div><a v-on:click= "pageNumber=4"> <span> {{ uiLabels.other }} </span> </a></div>
   <P class=”twentysixpoint”></P>
+  <div class ="sidenav e" v-if ="pageNumber===5"><a >{{ uiLabels.sides }}</a></div>
   <div><a v-on:click= "pageNumber=5"> <span> {{ uiLabels.sides }} </span> </a></div>
 
   </div>
-
-
-
 
   <div class= "img">
 
@@ -62,25 +67,69 @@
             </div>
           </div>
 
-
-
 <div class= "v1">
 
 </div>
 
   <div class="nexttosidenav">
+    <div class ="nexttosidenav a" v-if ="pageNumber===1"><a
+    v-for="item in chosenIngredients"
+    v-if ="item.category===1"
+    >{{item["ingredient_"+lang]}}</a></div>
+    <div><a
 
-    <div><a v-if ="pageNumber===1" >{{ chosenIngredients.map(item => item["ingredient_"+lang]).join('\n') }}</a></div>
-    <P class=”twentysixpoint”></P>
-    <div><a v-if ="pageNumber === 2"> {{ chosenIngredients.map(item => item["ingredient_"+lang]).join('\n') }}</a></div>
-    <P class=”twentysixpoint”></P>
-    <div><a v-if ="pageNumber ===3">{{ chosenIngredients.map(item => item["ingredient_"+lang]).join('\n') }}</a></div>
-    <P class=”twentysixpoint”></P>
-    <div><a v-if ="pageNumber ===4"> {{ chosenIngredients.map(item => item["ingredient_"+lang]).join('\n') }}</a></div>
-    <P class=”twentysixpoint”></P>
-    <div><a v-if ="pageNumber ===5">{{ chosenIngredients.map(item => item["ingredient_"+lang]).join('\n') }}</a></div>
+      v-for="item in chosenIngredients"
+      v-if ="item.category===1"
 
-  </div>
+      > {{item["ingredient_"+lang] }}</a> </div>
+    <P class="twentysixpoint"></P>
+
+    <div class ="nexttosidenav b" v-if ="pageNumber===2">
+      <a
+      v-for="item in chosenIngredients"
+      v-if ="item.category===2"
+     >{{ item["ingredient_"+lang]}}</a></div>
+    <div><a
+
+      v-for="item in chosenIngredients"
+      v-if ="item.category===2"
+      > {{ item["ingredient_"+lang]}}</a> </div>
+    <P class="twentysixpoint"></P>
+
+    <div class ="nexttosidenav c" v-if ="pageNumber ===3"><a
+
+    v-for="item in chosenIngredients"
+    v-if ="item.category===3"
+    > {{ item["ingredient_"+lang] }}</a></div>
+    <div><a
+
+      v-for="item in chosenIngredients"
+      v-if ="item.category===3"
+      > {{ item["ingredient_"+lang] }}</a> </div>
+    <P class="twentysixpoint"></P>
+
+    <div class ="nexttosidenav d" v-if ="pageNumber ===4">
+      <a v-for="item in chosenIngredients"
+      v-if ="item.category===4">
+    {{ item["ingredient_"+lang] }}</a></div>
+
+    <div>
+      <a v-for="item in chosenIngredients"
+      v-if ="item.category===4">
+      {{ item["ingredient_"+lang] }}</a> </div>
+
+    <P class="twentysixpoint"></P>
+
+    <div class ="nexttosidenav e" v-if ="pageNumber ===5">
+      <a v-for="item in chosenIngredients"
+    v-if ="item.category===5">
+     {{ item["ingredient_"+lang] }}</a> </div>
+    <div>
+      <a v-for="item in chosenIngredients"
+      v-if ="item.category===5">
+       {{ (item=> item["ingredient_"+lang]).join('\n') }} </a>
+     </div>
+      </div>
   <div id="ingredientHeader">
     <h1  v-if = "pageNumber===1">{{ uiLabels.bread }}</h1>
     <h1  v-if = "pageNumber===2">{{ uiLabels.protein }}</h1>
@@ -270,30 +319,30 @@ clearIngredients: function () {
 
 .img {
   position: absolute;
-  left: 2em;
-  top: 11.9em;
+  left: 1.5em;
+  top: 11.3em;
   z-index: -1;
 }
 
 .img2 {
   position: absolute;
-  left: 2em;
-  top: 16.5em;
+  left: 1.5em;
+  top: 16em;
   z-index: -1;
 
 }
 
 .img3 {
   position: absolute;
-  left: 2em;
-  top: 21.1em;
+  left: 1.5em;
+  top: 20.6em;
   z-index: -1;
 }
 
 .img4 {
   position: absolute;
-  left: 2em;
-  top: 25.7em;
+  left: 1.5em;
+  top: 25.2em;
   z-index: -2;
 }
 
@@ -311,9 +360,7 @@ clearIngredients: function () {
 
 .ordering {
   display:grid;
-  position: flex;
-
-
+  position: fixed;
 }
 
 .upperBorder {
@@ -450,6 +497,7 @@ clearIngredients: function () {
   grid-template-rows: 100px;
   column-gap: 10px;
 
+
 }
 
 #grid > div{
@@ -463,22 +511,11 @@ clearIngredients: function () {
 
     width: 80px;
     z-index: 1;
-    top: 10px;
+    top: 8px;
     padding: 2px 1;
 }
 
-
-.nexttosidenav{
-
-  position: fixed;
-  margin-top: 35%;
-
-    z-index: 0;
-    top: 10px;
-    padding: 2px 1;
-
-}
-
+<<<<<<< HEAD
 .nexttosidenav div {
   border: 1px solid black;
   overflow-y:scroll;
@@ -492,6 +529,8 @@ clearIngredients: function () {
   margin-left: 80px;
 
 }
+=======
+>>>>>>> 46b1c41393d61e63926ccb50fd6084243a39950e
 
 .sidenav div {
   border: 1px solid black;
@@ -504,7 +543,10 @@ clearIngredients: function () {
   height: 3.5em;
   margin-left: 10px;
   border-radius: 50px;
+<<<<<<< HEAD
   background-color: #F4A460;
+=======
+>>>>>>> 46b1c41393d61e63926ccb50fd6084243a39950e
 
 }
 
@@ -514,12 +556,64 @@ clearIngredients: function () {
 
 }
 
-.sidenav span:hover {
+.sidenav a:hover span {
 
   font-weight: bold;
   cursor: pointer;
-  color: #064579;
+  color: black;
 }
+
+
+.nexttosidenav{
+  position: fixed;
+  margin-top: 35%;
+
+    width: 80px;
+    z-index: 0;
+    top: 8px;
+
+}
+.a{
+    background-color: #FF8C00;
+
+
+}
+.b {
+  top:12.27%;
+    background-color: #FF8C00;
+
+}
+.c {
+  top:23.3%;
+    background-color: #FF8C00;
+
+}
+.d {
+  top:34.5%;
+    background-color: #FF8C00;
+}
+.e {
+  top:45.5%;
+
+    background-color: #FF8C00;
+}
+
+
+.nexttosidenav div {
+  border: 1px solid black;
+  overflow-y:scroll;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  width: 5em;
+  height: 3.5em;
+
+  border-radius: 25px;
+  margin-left: 80px;
+
+}
+
+
 .main {
     margin-left: 320px; /* Same width as the sidebar + left position in px */
     font-size: 28px; /* Increased text to enable scrolling */
@@ -559,26 +653,51 @@ clearIngredients: function () {
     margin-top: 25%;
 
   }
+
+  .a{
+    top:0.8%;
+
+  }
+  .b {
+    top:10.32%;
+
+  }
+  .c {
+    top:19.89%;
+  }
+  .d {
+    top:29.4%;
+  }
+  .e {
+    top:39%;
+  }
   .nexttosidenav div {
     width: 8em;
     height: 5em;
     margin-left: 7em;
   }
   .img {
-    left: 2.7em;
-    top: 17.4em;
+    left: 2.3em;
+    top: 16.7em;
   }
   .img2 {
-    left: 2.7em;
-    top: 23.5em;
+    left: 2.3em;
+    top: 22.9em;
   }
   .img3 {
-    left:2.7em;
-    top:29.6em;
+    left:2.3em;
+    top:29em;
   }
   .img4 {
-    left:2.7em;
-    top: 35.7em;
+    left:2.3em;
+    top: 35.2em;
+  }
+  .v1 {
+    height: 1000px;
+
+    left: 16.4em;
+    top: 5em;
+    z-index: -2;
   }
 }
 @media screen and (max-width: 500px) {

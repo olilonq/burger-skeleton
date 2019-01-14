@@ -5,9 +5,6 @@
       <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
     </head>
 
-
-
-
   <div class="homepage">
   <div class="homepageheader">
 
@@ -253,10 +250,6 @@ clearIngredients: function () {
   background-color: green;
 }
 
-
-
-
-
 @media screen and (min-height: 900px) and ( min-width: 700px) {
   .homepageheader {
     font-size: 6vw;
@@ -269,10 +262,6 @@ clearIngredients: function () {
 }
 
 }
-
-
-
-
 
 
 </style>
