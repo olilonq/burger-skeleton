@@ -13,7 +13,7 @@
 
 
   <div class="homepage">
-  <div class=homepageheader>
+  <div class="homepageheader">
 
       <h2 style="font-family:'Bree Serif', serif">  Welcome to </h2>
       <h1 style="font-family:'Bree Serif', serif"> Crafty Burgers</h1>
@@ -157,7 +157,7 @@ export default {
 
 table {
 
-  border-spacing: 1em . 5em;
+  border-spacing: 2em .5em;
   border-spacing: 1em .5em;
  padding: 0 2em 1em 0;
  border-radius: 1px;
@@ -181,8 +181,8 @@ td {
   #languageButton {
     position: fixed;
     transition: .5s ease;
-    top: 0;
-    right: 0;
+    top: 1.8%;
+    right: 5%;
     overflow: hidden;
   }
 
@@ -204,8 +204,8 @@ td {
   top: 84%;
   right: 20%;
   left: 10%;
-  width: 300px;
-  height: 100px;
+  width: 80%;
+  height: 15%;
   border: 1px solid gray;
   border-radius: 25px;
 
@@ -230,14 +230,29 @@ td {
 }
 
 .theborder {
-  position: fixed;
+  position: relative;
   border:  5px solid gray;
 
 
 
 }
+@media screen and (min-height: 900px) and ( min-width: 700px) {
+  .homepageheader {
+    font-size: 6vw;
+  }
+  #languageButton {
+    top: 1.2%;
+    right: 2.5%;
 
+  }
+  .boxwithin {
+    width: 110px;
+    height: 110px;
+    right: 10%;
+    left:40%
 
+  }
+}
 
 
 
