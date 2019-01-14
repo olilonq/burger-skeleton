@@ -161,7 +161,12 @@
       <button id="orderButton" v-if="pageNumber===5" v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
       <button id="nextButton" v-if="pageNumber<5" v-on:click="nextPage()">{{ uiLabels.next }}</button>
       <button id="backButton" v-on:click="previousPage()">Back</button>
-<button id= "placeOrder" v-on:click="placeOrder()" > {{ uiLabels.placeOrder }} </button>
+<!-- <button id= "placeOrder" v-on:click="placeOrder()" > {{ uiLabels.placeOrder }} </button> -->
+
+<form>
+<button id="placeOrder" formaction="/#/Payment"> {{ uiLabels.placeOrder }} </button>
+</form>
+
 
     </div>
   </div>
@@ -375,7 +380,7 @@ clearIngredients: function () {
 
 .upperBorder {
   position:fixed;
-  background-color: orange;
+  background-color: #fbe2a4;
   width: 100%;
   height: 15%;
   border-color:black;
@@ -401,7 +406,7 @@ clearIngredients: function () {
 
 
 .bottomBorder {
-  background-color: orange;
+  background-color: #fbe2a4;
   width: 100%;
   height: 25%;
   border-color:black;
@@ -525,6 +530,22 @@ clearIngredients: function () {
     padding: 2px 1;
 }
 
+<<<<<<< HEAD
+.nexttosidenav div {
+  border: 1px solid black;
+  overflow-y:scroll;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  width: 5em;
+  height: 3.5em;
+  border-radius: 25px;
+  background-color: #F4A460;
+  margin-left: 80px;
+
+}
+=======
+>>>>>>> 46b1c41393d61e63926ccb50fd6084243a39950e
 
 .sidenav div {
   border: 1px solid black;
@@ -537,6 +558,10 @@ clearIngredients: function () {
   height: 3.5em;
   margin-left: 10px;
   border-radius: 50px;
+<<<<<<< HEAD
+  background-color: #F4A460;
+=======
+>>>>>>> 46b1c41393d61e63926ccb50fd6084243a39950e
 
 }
 

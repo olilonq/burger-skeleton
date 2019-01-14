@@ -9,17 +9,34 @@
     <div id="top"></div>
     <div id="bottom"></div>
 
+    <form id= homeButton>
+      <input type="image" src="https://thumbs.gfycat.com/BigheartedRepulsiveIndianelephant-small.gif"  width="48" height="48" formaction="/#/">
+    </form>
+
+
 
     <div class="payment">
       <button id ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
-      <button id ="homeButton">{{ uiLabels.home }} </button>
+
+
+
 
       <div>
-        <h1 style="text-align: center; font-family:'Bree Serif'">{{ uiLabels.payment }}</h1>
+        <h1 style="text-align: center; font-family:'Bree Serif'"> {{ uiLabels.payment }} </h1>
       </div>
 
 
-      <div
+      <form id= paymentButton>
+        <div>
+          <h3 style="text-align: center; font-family:'Bree Serif'"> {{uiLabels.clickToPay}}  </h3>
+        </div>
+
+        <input type="image" src="https://ecommercenews.eu/wp-content/uploads/2013/06/most_common_payment_methods_in_europe-740x393.png"  width="200" height="120" formaction="/#/">
+      </form>
+
+      <div>
+        <h3 style="text-align: center; font-family:'Bree Serif'"> {{uiLabels.paymentOrder}} </h3>
+      </div>
 
 
 
@@ -30,16 +47,19 @@
 </template>
 
 
-
-
-
 <script>
 
-
+//import the components that are used in the template, the name that you
+//use for importing will be used in the template above and also below in
+//components
+import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
+
+//import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
 
-
+/* instead of defining a Vue instance, export default allows the only
+necessary Vue instance (found in main.js) to import your data and methods */
 export default {
   name: 'Ordering',
   components: {
@@ -49,11 +69,14 @@ export default {
   mixins: [sharedVueStuff], // include stuff that is used in both
                             // the ordering system and the kitchen
   data: function() { //Not that data is a function!
+
     return {
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
       pageNumber:1,
+      burgerCount: 1
+
     }
   },
   created: function () {
@@ -61,47 +84,109 @@ export default {
       this.orderNumber = data;
     }.bind(this));
   },
-  methods: {
+
+methods: {
+  addBurger: function () {
+  for (let i = 0; i < this.chosenIngredients.length; i += 1) {
+    if (typeof this.chosenIngredients[i].burgerCount === 'undefined') {
+      this.$set(this.chosenIngredients[i], 'burgerCount', this.burgerCount);
+    }
+  }
+  this.burgerCount += 1;
+  this.clearIngredients();
+},
+currentBurger: function () {
+  return this.chosenIngredients.map(function (item) {
+    if (typeof item.burgerCount === 'undefined') {
+      return item["ingredient_" + this.lang];
+    }
+  }.bind(this)).join(' ');
+},
+burgersInOrder: function () {
+  return this.chosenIngredients.map(function (item) {
+    if (typeof item.burgerCount !== 'undefined') {
+      return item.burgerCount + ": " + item["ingredient_" + this.lang];
+    }
+  }.bind(this)).join(' ');
+},
+
+burgerCounter: function () {
+  return this.chosenIngredients.map(function (item) {
+    if (typeof item.burgerCount === 'undefined') {
+      return item["ingredient_" + this.lang];
+    }
+  }.bind(this));
+},
+
+clearIngredients: function () {
+  //set all counters to 0. Notice the use of $refs
+  for (let i = 0; i < this.$refs.ingredient.length; i += 1) {
+    this.$refs.ingredient[i];
+  }
+},
     addToOrder: function (item) {
-      this.chosenIngredients.push(item);
-      this.price += +item.selling_price;
+      var counter = 0;
+      for (var i = 0;i < this.chosenIngredients.length;i++){
+        if(this.chosenIngredients[i] === item){
+          counter++;
+        }
+      }
+
+      if(item.stock > counter){
+        this.chosenIngredients.push(item);
+        this.price += +item.selling_price;
+      }
     },
 
     removeFromOrder: function(item){
-      this.chosenIngredients.splice(item,1);
-      this.price -= item.selling_price;
+      if(this.price > 0 && this.chosenIngredients.includes(item)){
+        for(var i = 0; i < this.chosenIngredients.length;i++){
+          if(this.chosenIngredients[i] === item){
+            break;
+          }
+        }
+        this.chosenIngredients.splice(i,1);
+        this.price -= item.selling_price;
+      }
     },
     placeOrder: function () {
-      var i,
+      if(this.chosenIngredients.length > 0){
+
       //Wrap the order in an object
-        order = {
+      let order = {
+
           ingredients: this.chosenIngredients,
           price: this.price
         };
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       this.$store.state.socket.emit('order', {order: order});
       //set all counters to 0. Notice the use of $refs
-      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
-        this.$refs.ingredient[i].resetCounter();
-      }
+      this.clearIngredients();
       this.price = 0;
       this.chosenIngredients = [];
-    },
+    }
+
+  },
     nextPage: function () {
       if(this.pageNumber < 5){
         this.pageNumber +=1
       }
     },
 
+
     previousPage: function () {
       if(this.pageNumber > 1){
         this.pageNumber -=1
-      }
-    }
+      }}
   }
 }
-
 </script>
+
+
+
+
+
+
 
 
 
@@ -134,13 +219,26 @@ export default {
 
   }
 
-  #homeButton{
+  #homeButton {
+
     position: fixed;
-    transition: .5s ease;
-    top: 15px;
-    left: 15px;
-    overflow: hidden;
-}
+    top:15px;
+
+
+  }
+
+  #paymentButton {
+
+    position: fixed;
+    top:350px;
+    left: 88px
+
+
+
+
+
+  }
+
 
 
 

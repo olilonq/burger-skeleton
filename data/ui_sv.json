@@ -28,6 +28,8 @@
   "served": "Serverad",
   "payment":"Betalning",
   "welcomeTo":"Välkommen till",
-  "createBurger": "Skapa din egen burgare"
+  "createBurger": "Skapa din egen burgare",
+  "paymentOrder": "Din beställning",
+  "clickToPay": "Klicka för att betala"
 
 }

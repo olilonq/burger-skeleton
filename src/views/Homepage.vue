@@ -40,7 +40,11 @@
 
   </div>
 
-     <button id= "fastorderbutton" v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+
+
+     <form>
+     <button id="fastorderbutton" formaction="/#/Payment"> {{ uiLabels.placeOrder }} </button>
+     </form>
 
 
   </body>
@@ -184,7 +188,7 @@ clearIngredients: function () {
 #fastorderbutton{
 
   position: fixed;
-  top:92%;
+  top:93%;
   left:37.5%;
   height: 5%;
   width: 25%;
