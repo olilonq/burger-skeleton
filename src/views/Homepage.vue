@@ -43,7 +43,7 @@
 
 
      <form>
-     <button id="fastorderbutton" formaction="/#/Payment"> {{ uiLabels.placeOrder }} </button>
+     <button id="fastorderbutton" v-on:click = "placeOrder()" formaction="/#/Payment"> {{ uiLabels.placeOrder }} </button>
      </form>
 
 

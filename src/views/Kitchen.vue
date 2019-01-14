@@ -15,7 +15,7 @@
       <div class="grid-c">
       <OrderItemToPrepare
         v-for="(order, key) in orders"
-        v-if="order.status !== 'done' && order.status !== 'served'"
+        v-if="order.status === 'paid'"
         v-on:done= "markDone(key)"
         :order-id="key"
         :order="order"
@@ -60,7 +60,7 @@
 
   <div class="stockWindow" v-show="ShowStock">
     <div>
-          <div v-for="(item, index) in ingredients">
+          <div v-for="(item, index) in ingredients" :key="index" >
             <div v-if="item.stock < 10"> {{ item.ingredient_en }}:{{ item.stock }}st </div>
           </div>
   </div>
@@ -254,8 +254,14 @@ export default {
    display: none;
 }
   .grid-d{
-    display: grid;
-    grid-template-columns: 600px 600px;
+      display: grid;
+      grid-template-columns: 600px 600px 180px;
+      border: 5px;
+      overflow:auto;
+      margin:5px;
+      max-height: 590px;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
 
   }
 
