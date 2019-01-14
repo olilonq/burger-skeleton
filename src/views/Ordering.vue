@@ -87,6 +87,7 @@
     <h1  v-if = "pageNumber===3">{{ uiLabels.vegetable }}</h1>
     <h1  v-if = "pageNumber===4">{{ uiLabels.other }}</h1>
     <h1  v-if = "pageNumber===5">{{ uiLabels.sides }}</h1>
+
   </div>
 
 
@@ -231,6 +232,7 @@ clearIngredients: function () {
           ingredients: this.chosenIngredients,
           price: this.price
         };
+
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       this.$store.state.socket.emit('order', {order: order});
       //set all counters to 0. Notice the use of $refs
@@ -264,14 +266,14 @@ clearIngredients: function () {
 }
 
 .img {
-  position: absolute;
+  position: fixed;
   left: 2em;
   top: 11.9em;
   z-index: -1;
 }
 
 .img2 {
-  position: absolute;
+  position: fixed;
   left: 2em;
   top: 16.5em;
   z-index: -1;
@@ -279,14 +281,14 @@ clearIngredients: function () {
 }
 
 .img3 {
-  position: absolute;
+  position: fixed;
   left: 2em;
   top: 21.1em;
   z-index: -1;
 }
 
 .img4 {
-  position: absolute;
+  position: fixed;
   left: 2em;
   top: 25.7em;
   z-index: -2;
