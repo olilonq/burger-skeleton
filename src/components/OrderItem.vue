@@ -13,10 +13,12 @@
 	<div v-if= "order.status === 'not-started'">
 
 
-		<h3 style="text-align: center; font-family:'Bree Serif'"> {{uiLabels.clickToPay}}  </h3>
+		<h3 style="font-family:'Bree Serif';text-align: center;"> {{uiLabels.clickToPay}}  </h3>
 
-	<div v-on:click="orderPaid">
-		<form  style = "" id= "paymentButton">
+	<div style=" display: block;
+    margin-left: 15%;
+    margin-right: auto "v-on:click="orderPaid">
+		<form id= "paymentButton">
 
 			<input type="image" src="https://ecommercenews.eu/wp-content/uploads/2013/06/most_common_payment_methods_in_europe-740x393.png"  width="200" height="120" formaction="/#/"  >
 
@@ -24,8 +26,8 @@
 
 </div>
 
-<h4 style="text-align: center;">
-	Your order number: {{orderId}}
+<h4 style="text-align: center">
+	{{uiLabels.orderNumber}} {{orderId}}
 </h4>
 </div>
 

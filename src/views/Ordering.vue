@@ -572,10 +572,6 @@ clearIngredients: function () {
   margin-left: 80px;
 
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 3354eaf48b440554d5b73548a480224ff88d2e86
 
 .sidenav div {
   border: 1px solid black;

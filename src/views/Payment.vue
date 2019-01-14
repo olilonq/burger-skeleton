@@ -230,11 +230,11 @@ clearIngredients: function () {
 .grid-c{
   display: grid;
   max.width: 600px 200px 200px 200px 200px;
-  width:550px;
+  width:300px;
   height:auto;
   margin:10px;
   padding:10px;
-  border-radius: 25px;
+  border-radius: 10px;
   position: fixed;
 }
 
@@ -273,20 +273,16 @@ clearIngredients: function () {
 
   }
 
-  #paymentButton {
-
-    position: fixed;
-    top:350px;
-    left: 88px
 
 
 
 
 
-  }
+
+  @media screen and (min-height: 900px) and ( min-width: 700px)  {
 
 
-
+}
 
 
 

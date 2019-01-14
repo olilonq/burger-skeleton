@@ -6,9 +6,8 @@
     </head>
 
 
-
-
   <div class="homepage">
+
   <div class="homepageheader">
 
       <h2 style="font-family:'Bree Serif', serif">  {{uiLabels.welcome}} </h2>
@@ -298,6 +297,8 @@ clearIngredients: function () {
 
 
 }
+
+
 .ingredient {
   left:22%;
   width: 10em;

@@ -31,6 +31,7 @@
   "clickToPay": "Klicka för att betala",
   "welcome" : "Välkommen till ",
   "CreateBurger" : "Skapa din egen burgare",
-  "FastOrderingHeader": "Bråttom? Pröva en av våra färdiga burgare!"
+  "FastOrderingHeader": "Bråttom? Pröva en av våra färdiga burgare!",
+  "orderNumber": "Ditt ordernummer:"
 
 }
