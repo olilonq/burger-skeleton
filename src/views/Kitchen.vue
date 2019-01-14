@@ -2,6 +2,7 @@
 
   <div id="orders">
     <button id ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
+
     <!--Antal 100g: {{countBeef100}},
     Antal 200g: {{countBeef200}},
     Antal Kyckling: {{countChicken}},
@@ -48,8 +49,12 @@
   <div class="stock">
 
     <div style="display:flex; justify-content:space-evenly;">
-        <div v-for= "(item,key) in StockItems" class="StockItems" :key="key" v-bind:style="{ background: item.color }">
-        <h4>{{item.label}}</h4>
+        <div v-for= "(item,key) in StockItems" class="StockItems" :key="key" v-bind:style="{ background: item.color }" style="padding: 10px;">
+        <div style="font-size: 30px; padding:8px;">{{item.label}}</div>
+        <div v-for="item in item.stockLow" >
+          <div style="font-size: 20px;">{{item}}</div>
+        </div>
+
         </div>
 
       </div>
@@ -57,6 +62,7 @@
   </div>
 </template>
 <script>
+
 import OrderItem from '@/components/OrderItem.vue'
 import OrderItemToPrepare from '@/components/OrderItemToPrepare.vue'
 
@@ -130,11 +136,11 @@ export default {
       return counter;
     },*/
 
-    StockItems: function () { return [{cat:1, label: this.uiLabels.bread, color: this.getStock(1)},
-          {cat:2, label:this.uiLabels.protein, color: this.getStock(2)},
-          {cat:3, label:this.uiLabels.vegetable, color: this.getStock(3)},
-          {cat:4, label:this.uiLabels.other, color: this.getStock(4)},
-          {cat:5, label:this.uiLabels.sides, color: this.getStock(5)}];
+    StockItems: function () { return [{cat:1, label: this.uiLabels.bread, color: this.getStock(1), stockLow: this.StockItemsLow(1)},
+          {cat:2, label:this.uiLabels.protein, color: this.getStock(2), stockLow: this.StockItemsLow(2)},
+          {cat:3, label:this.uiLabels.vegetable, color: this.getStock(3), stockLow: this.StockItemsLow(3)},
+          {cat:4, label:this.uiLabels.other, color: this.getStock(4), stockLow: this.StockItemsLow(4)},
+          {cat:5, label:this.uiLabels.sides, color: this.getStock(5), stockLow: this.StockItemsLow(5)}];
         }
   },
   methods: {
@@ -148,25 +154,43 @@ export default {
       this.$store.state.socket.emit("orderDone", orderid);
     },
 
-    changeStock: function (item, saldo) {
-     this.$store.state.socket.emit("updateStock",(item, saldo));
+ StockItemsLow: function(cat){
+   const values = Object.values(this.ingredients)
+   let ItemsLow = [];
+   let counter = 0;
+   for (var item in values) {
+
+     if (values[item].category === cat){
+
+       if(values[item].stock < 10 ){
+         ItemsLow[counter] = values[item].ingredient_en;
+         counter+=1;
+       }
+
+     }
+
+   }
+   return  ItemsLow;
  },
 
    getStock: function (cat) {
       let status = "green"
+      const values = Object.values(this.ingredients)
 
-      for(let item in this.ingredients) {
-        if (item.category === cat){
-          if(item.stock === 0 ){
+      for (var item in values) {
+
+        if (values[item].category === cat){
+
+          if(values[item].stock === 0 ){
           status = "red";
           break;
           }
-          else if(item.stock < 20){
+          else if(values[item].stock < 10){
           status = "yellow";
-          }
-
         }
+
       }
+    }
         return status;
       }
 

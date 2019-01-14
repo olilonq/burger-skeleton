@@ -20,7 +20,7 @@ body {
   height:80vh;
   background: #fbe2a4;
   background-size: 200% 200%;
-  animation: Gradient 20s linear infinite;
+  overflow-y: hidden;
 }
 
 @keyframes Gradient {

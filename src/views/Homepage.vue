@@ -1,10 +1,6 @@
 
-
-
-
-
 <template>
-  <body class= "theborder">
+  <body >
     <head>
       <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
     </head>
@@ -18,61 +14,37 @@
       <h2 style="font-family:'Bree Serif', serif">  Welcome to </h2>
       <h1 style="font-family:'Bree Serif', serif"> Crafty Burgers</h1>
 
-
       <div class ="upperBorder">
         <button id ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
       </div>
-      </div>
+    </div>
+
+
    <div class="mainBorder">
      <div class="button">
      <button id="CraftButton" href="/ordering">Create your own burger<img src="http://thinkingstiff.com/images/matt.jpg"></button>
-     <div class= "bottombox">
-       <table>
-         <tr>
-           <td>
-
-
-       <div class= "boxwithin">
-
-       </div>
-     </td>
-     <td>
-       <div class ="boxwithin">
-       </div>
-     </td>
-     <td>
-
-       <div class ="boxwithin">
-       </div>
-
-     </td>
-
-     <td>
-
-       <div class ="boxwithin">
-       </div>
-
-     </td>
-
-
-
-     </tr>
-
-   </table>
-
-
-
-     </div>
-     </div>
-
+</div>
      <form>
    <button id="CraftButton" formaction="/#/ordering">Create your own burger</button>
    </form>
+</div>
+   <div class="fastorderpanel">
+     <Ingredient
+     v-if ="item.category===pageNumber"
+     ref="ingredient"
+     v-for="item in ingredients"
+     v-on:increment="addToOrder(item)"
+     v-on:decrease="removeFromOrder(item)"
+     :item="item"
+     :lang="lang"
+     :key="item.ingredient_id">
+     </Ingredient>
+     </div>
 
   </div>
-  </div>
 
-  </div>
+     <button id= "fastorderbutton" v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+
 
   </body>
 </template>
@@ -89,7 +61,7 @@ import sharedVueStuff from '@/components/sharedVueStuff.js'
 
 
 export default {
-  name: 'Ordering',
+  name: 'Homepage',
   components: {
     Ingredient,
     OrderItem
@@ -101,7 +73,7 @@ export default {
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
-      pageNumber:1,
+      pageNumber:6,
     }
   },
   created: function () {
@@ -110,16 +82,68 @@ export default {
     }.bind(this));
   },
   methods: {
+
+
+  addBurger: function () {
+  for (let i = 0; i < this.chosenIngredients.length; i += 1) {
+    if (typeof this.chosenIngredients[i].burgerCount === 'undefined') {
+      this.$set(this.chosenIngredients[i], 'burgerCount', this.burgerCount);
+    }
+  }
+  this.burgerCount += 1;
+  this.clearIngredients();
+},
+currentBurger: function () {
+  return this.chosenIngredients.map(function (item) {
+    if (typeof item.burgerCount === 'undefined') {
+      return item["ingredient_" + this.lang];
+    }
+  }.bind(this)).join(', ');
+},
+burgersInOrder: function () {
+  return this.chosenIngredients.map(function (item) {
+    if (typeof item.burgerCount !== 'undefined') {
+      return item.burgerCount + ": " + item["ingredient_" + this.lang];
+    }
+  }.bind(this)).join(' ');
+},
+
+burgerCounter: function () {
+  return this.chosenIngredients.map(function (item) {
+    if (typeof item.burgerCount === 'undefined') {
+      return item["ingredient_" + this.lang];
+    }
+  }.bind(this));
+},
+
+clearIngredients: function () {
+  //set all counters to 0. Notice the use of $refs
+  for (let i = 0; i < this.$refs.ingredient.length; i += 1) {
+    this.$refs.ingredient[i];
+  }
+},
+
+
+
     addToOrder: function (item) {
       this.chosenIngredients.push(item);
       this.price += +item.selling_price;
     },
 
     removeFromOrder: function(item){
-      this.chosenIngredients.splice(item,1);
-      this.price -= item.selling_price;
+      if(this.price > 0 && this.chosenIngredients.includes(item)){
+        for(var i = 0; i < this.chosenIngredients.length;i++){
+          if(this.chosenIngredients[i] === item){
+            break;
+          }
+        }
+        this.chosenIngredients.splice(i,1);
+        this.price -= item.selling_price;
+      }
     },
+
     placeOrder: function () {
+      if(this.chosenIngredients.length > 0){
       var i,
       //Wrap the order in an object
         order = {
@@ -130,10 +154,11 @@ export default {
       this.$store.state.socket.emit('order', {order: order});
       //set all counters to 0. Notice the use of $refs
       for (i = 0; i < this.$refs.ingredient.length; i += 1) {
-        this.$refs.ingredient[i].resetCounter();
+        this.$refs.ingredient[i];
       }
       this.price = 0;
       this.chosenIngredients = [];
+    }
     },
     nextPage: function () {
       if(this.pageNumber < 5){
@@ -147,6 +172,8 @@ export default {
       }
     }
   }
+
+
 }
 
 </script>
@@ -155,20 +182,43 @@ export default {
 
 <style scoped>
 
-table {
 
-  border-spacing: 2em .5em;
-  border-spacing: 1em .5em;
- padding: 0 2em 1em 0;
- border-radius: 1px;
+
+#fastorderbutton{
+
+  position: fixed;
+  top:92%;
+  left:37.5%;
+  height: 5%;
+  width: 25%;
 
 
 }
 
-td {
-  height: 3.5em;
+.fastorderpanel {
+  position: absolute;
+  margin-right:45%;
+  margin-left: 20%;
+  height: 30%;
+  width: 30%;
+  top: 75%;
+  display:grid;
+  grid-template-columns: auto auto;
+
+
 }
 
+.ingredient {
+  border: 1px solid #ccd;
+  border-radius:10px;
+  width: 6em;
+  height: 6em;
+  margin-right: 0.5em;
+  margin-bottom:0.5em;
+  color: black;
+  background-size: 6.5em 6em;
+
+}
 
 
 .homepageheader{
@@ -191,14 +241,15 @@ td {
   transition: .5s ease;
   font-size: 30px;
   width: 60%;
-  height: 30%;
-  top: 50%;
+  height: 25%;
+  top: 44%;
   right: 20%;
   overflow: hidden;
   border-radius: 8vh;
   background-color: green;
 }
 
+<<<<<<< HEAD
 .bottombox {
   position: fixed;
   top: 84%;
@@ -229,6 +280,12 @@ td {
 
 
 }
+=======
+
+
+
+
+>>>>>>> 584ce18eddd782f772549231d1ad95a06fe769ae
 @media screen and (min-height: 900px) and ( min-width: 700px) {
   .homepageheader {
     font-size: 6vw;
@@ -237,15 +294,21 @@ td {
     top: 1.2%;
     right: 2.5%;
 
+<<<<<<< HEAD
   }
   .boxwithin {
     width: 110px;
     height: 110px;
     right: 10%;
     left:40%
+=======
+>>>>>>> 584ce18eddd782f772549231d1ad95a06fe769ae
 
-  }
 }
+
+}
+
+
 
 
 

@@ -20,10 +20,12 @@
   "language" : "Svenska",
   "bread" :"Bread",
   "protein" :"Protein",
-  "vegetable" : "Vegetable",
+  "vegetable" : "Veggies",
   "other" : "Other",
   "sides" : "Sides",
   "home" : "Home",
   "back" : "Back",
-  "served": "Served"
+  "served": "Served",
+  "payment":"Payment"
+
 }

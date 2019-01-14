@@ -158,21 +158,11 @@
     <hr>
     {{ currentBurger() }}, {{ price }} kr
     <button v-on:click="addBurger()">{{ uiLabels.addToOrder }}</button>
-    <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
       <button id="orderButton" v-if="pageNumber===5" v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
       <button id="nextButton" v-if="pageNumber<5" v-on:click="nextPage()">{{ uiLabels.next }}</button>
       <button id="backButton" v-on:click="previousPage()">Back</button>
+<button id= "placeOrder" v-on:click="placeOrder()" > {{ uiLabels.placeOrder }} </button>
 
-      <h2>{{ uiLabels.ordersInQueue }}</h2>
-      <OrderItem
-        v-for="(order, key) in orders"
-        v-if="order.status !== 'done'"
-        :order-id="key"
-        :order="order"
-        :ui-labels="uiLabels"
-        :lang="lang"
-        :key="key">
-      </OrderItem>
     </div>
   </div>
 </template>
@@ -205,6 +195,7 @@ export default {
       orderNumber: "",
       pageNumber:1,
       burgerCount: 1
+
     }
   },
   created: function () {
@@ -228,31 +219,57 @@ currentBurger: function () {
     if (typeof item.burgerCount === 'undefined') {
       return item["ingredient_" + this.lang];
     }
-  }.bind(this)).join(', ');
+  }.bind(this)).join(' ');
 },
 burgersInOrder: function () {
   return this.chosenIngredients.map(function (item) {
     if (typeof item.burgerCount !== 'undefined') {
       return item.burgerCount + ": " + item["ingredient_" + this.lang];
     }
-  }.bind(this)).join(', ');
+  }.bind(this)).join(' ');
 },
+
+burgerCounter: function () {
+  return this.chosenIngredients.map(function (item) {
+    if (typeof item.burgerCount === 'undefined') {
+      return item["ingredient_" + this.lang];
+    }
+  }.bind(this));
+},
+
 clearIngredients: function () {
   //set all counters to 0. Notice the use of $refs
   for (let i = 0; i < this.$refs.ingredient.length; i += 1) {
-    this.$refs.ingredient[i].resetCounter();
+    this.$refs.ingredient[i];
   }
 },
     addToOrder: function (item) {
-      this.chosenIngredients.push(item);
-      this.price += +item.selling_price;
+      var counter = 0;
+      for (var i = 0;i < this.chosenIngredients.length;i++){
+        if(this.chosenIngredients[i] === item){
+          counter++;
+        }
+      }
+
+      if(item.stock > counter){
+        this.chosenIngredients.push(item);
+        this.price += +item.selling_price;
+      }
     },
 
     removeFromOrder: function(item){
-      this.chosenIngredients.splice(item,1);
-      this.price -= item.selling_price;
+      if(this.price > 0 && this.chosenIngredients.includes(item)){
+        for(var i = 0; i < this.chosenIngredients.length;i++){
+          if(this.chosenIngredients[i] === item){
+            break;
+          }
+        }
+        this.chosenIngredients.splice(i,1);
+        this.price -= item.selling_price;
+      }
     },
     placeOrder: function () {
+      if(this.chosenIngredients.length > 0){
 
       //Wrap the order in an object
       let order = {
@@ -266,12 +283,15 @@ clearIngredients: function () {
       this.clearIngredients();
       this.price = 0;
       this.chosenIngredients = [];
-    },
+    }
+
+  },
     nextPage: function () {
       if(this.pageNumber < 5){
         this.pageNumber +=1
       }
     },
+
 
     previousPage: function () {
       if(this.pageNumber > 1){

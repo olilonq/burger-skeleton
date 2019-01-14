@@ -60,3 +60,5 @@ ingredient_id,ingredient_sv,ingredient_en,category,milk_free,gluten_free,vegan,s
 59,Läsk,Soda,5,1,1,1,20,lask.jpg
 60,Jordgubbsmilkshake,Strawberry milk shake,5,0,1,0,40,smilk.jpg
 61,Vegansk mango lassi,Vegan mango lassi,5,1,1,1,40,lask.jpg
+62,Ostburgare ,Cheeseburger ,6 ,0 ,0 ,0 ,63 ,cheeseburger.jpg
+63,Vegetarisk Ostburgare ,Vegetarian Cheesburger ,6 ,0 ,0 ,1 ,60 ,vegetarianburger.jpg
