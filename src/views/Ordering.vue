@@ -112,17 +112,8 @@
       <button id="orderButton" v-if="pageNumber===5" v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
       <button id="nextButton" v-if="pageNumber<5" v-on:click="nextPage()">{{ uiLabels.next }}</button>
       <button id="backButton" v-on:click="previousPage()">Back</button>
+<button id= "placeOrder" v-on:click="placeOrder()" > {{ uiLabels.placeOrder }} </button>
 
-      <h2>{{ uiLabels.ordersInQueue }}</h2>
-      <OrderItem
-        v-for="(order, key) in orders"
-        v-if="order.status !== 'done'"
-        :order-id="key"
-        :order="order"
-        :ui-labels="uiLabels"
-        :lang="lang"
-        :key="key">
-      </OrderItem>
     </div>
   </div>
 </template>
@@ -179,7 +170,7 @@ currentBurger: function () {
     if (typeof item.burgerCount === 'undefined') {
       return item["ingredient_" + this.lang];
     }
-  }.bind(this)).join(', ');
+  }.bind(this)).join(' ');
 },
 burgersInOrder: function () {
   return this.chosenIngredients.map(function (item) {
@@ -229,6 +220,7 @@ clearIngredients: function () {
       }
     },
     placeOrder: function () {
+      if(this.chosenIngredients.length > 0){
 
       //Wrap the order in an object
       let order = {
@@ -242,12 +234,15 @@ clearIngredients: function () {
       this.clearIngredients();
       this.price = 0;
       this.chosenIngredients = [];
-    },
+    }
+
+  },
     nextPage: function () {
       if(this.pageNumber < 5){
         this.pageNumber +=1
       }
     },
+
 
     previousPage: function () {
       if(this.pageNumber > 1){
