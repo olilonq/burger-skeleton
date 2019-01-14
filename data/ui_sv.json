@@ -27,9 +27,10 @@
   "back" : "Tillbaka",
   "served": "Serverad",
   "payment":"Betalning",
-  "welcomeTo":"Välkommen till",
-  "createBurger": "Skapa din egen burgare",
   "paymentOrder": "Din beställning",
-  "clickToPay": "Klicka för att betala"
+  "clickToPay": "Klicka för att betala",
+  "welcome" : "Välkommen till ",
+  "CreateBurger" : "Skapa din egen burgare",
+  "FastOrderingHeader": "Bråttom? Pröva en av våra färdiga burgare!"
 
 }

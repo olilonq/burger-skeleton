@@ -30,6 +30,9 @@
   "welcomeTo":"Welcome to",
   "createBurger": "Create your own burger",
   "paymentOrder": "Your order",
-  "clickToPay" : "Click to pay"
+  "clickToPay" : "Click to pay",
+  "welcome" : "Welcome to ",
+  "CreateBurger" : "Create your own burger",
+  "FastOrderingHeader": "In a Hurry? Try a premade burger!"
 
 }

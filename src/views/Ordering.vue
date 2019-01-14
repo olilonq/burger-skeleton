@@ -1,15 +1,22 @@
 <template>
+<body>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+  </head>
+
   <div class="ordering">
 
     <div class ="upperBorder">
 
       <button id ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
+
+
       <form >
-        <input type="image" src="https://thumbs.gfycat.com/BigheartedRepulsiveIndianelephant-small.gif"  width="48" height="48" formaction="/#/">
+        <input type="image" src="https://thumbs.gfycat.com/BigheartedRepulsiveIndianelephant-small.gif"  width="48" height="48" formaction="/#/" >
       </form>
 
 
-      <h1 id="siteTitle"> Crafty Burgers</h1>
+      <h1 id="siteTitle" style="font-family:'Bree Serif', serif" > Crafty Burgers</h1>
     </div>
 
     <div class="sidenav">
@@ -124,15 +131,14 @@ v-if ="item.category===4"
       <a v-for="item in chosenIngredients"
     v-if ="item.category===5">
      {{ item["ingredient_"+lang] }}</a> </div>
+
   </div>
-
-
-  <div id="ingredientHeader">
-    <h1  v-if = "pageNumber===1">{{ uiLabels.bread }}</h1>
-    <h1  v-if = "pageNumber===2">{{ uiLabels.protein }}</h1>
-    <h1  v-if = "pageNumber===3">{{ uiLabels.vegetable }}</h1>
-    <h1  v-if = "pageNumber===4">{{ uiLabels.other }}</h1>
-    <h1  v-if = "pageNumber===5">{{ uiLabels.sides }}</h1>
+  <div id="ingredientHeader" >
+    <h2  v-if = "pageNumber===1" style="font-family:'Bree Serif', serif">{{ uiLabels.bread }}</h2>
+    <h2  v-if = "pageNumber===2" style="font-family:'Bree Serif', serif">{{ uiLabels.protein }}</h2>
+    <h2  v-if = "pageNumber===3" style="font-family:'Bree Serif', serif">{{ uiLabels.vegetable }}</h2>
+    <h2  v-if = "pageNumber===4" style="font-family:'Bree Serif', serif">{{ uiLabels.other }}</h2>
+    <h2  v-if = "pageNumber===5" style="font-family:'Bree Serif', serif">{{ uiLabels.sides }}</h2>
   </div>
 
 
@@ -150,23 +156,29 @@ v-if ="item.category===4"
       </div>
     <div class="bottomBorder">
 
-      <h2 id="currentOrder">{{ uiLabels.order }}</h2>
+      <h2 id="currentOrder" style="font-family:'Bree Serif', serif">{{ uiLabels.order }}</h2>
       {{ burgersInOrder() }}
     <hr>
     {{ currentBurger() }}, {{ price }} kr
     <button v-on:click="addBurger()">{{ uiLabels.addToOrder }}</button>
-      <button id="orderButton" v-if="pageNumber===5" v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+    <form>
+      <button id="orderButton" v-if="pageNumber===5"  formaction="/#/Payment" v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+    </form>
       <button id="nextButton" v-if="pageNumber<5" v-on:click="nextPage()">{{ uiLabels.next }}</button>
       <button id="backButton" v-on:click="previousPage()">Back</button>
 <!-- <button id= "placeOrder" v-on:click="placeOrder()" > {{ uiLabels.placeOrder }} </button> -->
 
 <form>
-<button id="placeOrder" formaction="/#/Payment"> {{ uiLabels.placeOrder }} </button>
+
+<button id="finalorderbutton"  formaction="/#/Payment" > {{ uiLabels.placeOrder }} </button>
+
 </form>
+
 
 
     </div>
   </div>
+</body>
 </template>
 <script>
 
@@ -197,11 +209,6 @@ export default {
       orderNumber: "",
       pageNumber:1,
       burgerCount: 1,
-      bread1:[0,"1"],
-      patty1:[0,"1"],
-      veggie1:[0,"1"],
-      other1:[0,"1"],
-      sides1:[0,"1"]
 
     }
   },
@@ -321,14 +328,12 @@ clearIngredients: function () {
 }
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
 #siteTitle {
-  display:flex;
-  font-weight: bold;
-
+  margin-left:20%;
+  margin-top: 0px;
   align-items:center;
   justify-content: center;
   color:black;
-  font-style:serif;
-  font-size: 20pt;
+
 }
 
 .img {
@@ -361,7 +366,7 @@ clearIngredients: function () {
 }
 
 .v1 {
-  border-left: 2px solid gray;
+  border-left: 1px solid #DCDCDC;
   height: 700px;
 
   position: absolute;
@@ -440,12 +445,26 @@ clearIngredients: function () {
   background-color: rgb(0,200,0);
 }
 
+
+
 #nextButton {
   position: absolute;
   transition: .5s ease;
   top: 0;
   right: 0;
   background-color: rgb(0,200,0);
+}
+
+#finalorderbutton {
+
+  position: absolute;
+  transition: .5s ease;
+  margin-top: 1px;
+  margin-left: 25px;
+  right: 0;
+  background-color: rgb(0,200,0);
+
+
 }
 
 #backButton {
@@ -550,7 +569,6 @@ clearIngredients: function () {
   height: 3.5em;
   margin-left: 10px;
   border-radius: 50px;
-
 }
 
 .sidenav span{

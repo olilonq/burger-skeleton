@@ -7,7 +7,8 @@ var sharedVueStuff = {
       orders: {},
       uiLabels: {},
       ingredients: {},
-      lang: "en"
+      lang: "en",
+      ShowStock: false
 
 }
 },
