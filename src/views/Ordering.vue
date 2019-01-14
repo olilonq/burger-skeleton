@@ -7,6 +7,7 @@
   <div class="ordering">
 
     <div class ="upperBorder">
+
       <button id ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
 
 
@@ -15,8 +16,7 @@
       </form>
 
 
-
-      <h3 id="siteTitle" style="font-family:'Bree Serif', serif"> Crafty Burgers </h3>
+      <h1 id="siteTitle" style="font-family:'Bree Serif', serif" > Crafty Burgers</h1>
     </div>
 
     <div class="sidenav">
@@ -80,64 +80,59 @@
 </div>
 
   <div class="nexttosidenav">
-    <div class ="nexttosidenav a" v-if ="pageNumber===1"><a
-    v-for="item in chosenIngredients"
-    v-if ="item.category===1"
-    >{{item["ingredient_"+lang] }} </a></div>
-    <div><a
-
+      <div class ="nexttosidenav a" v-if ="pageNumber===1">
+        <a v-for="item in chosenIngredients"
+	    v-if ="item.category===1"
+	    >{{item["ingredient_"+lang] }} </a></div>
+      <div><a
       v-for="item in chosenIngredients"
       v-if ="item.category===1"
+      > {{ item["ingredient_"+lang] }}</a> </div>
 
-      > {{item["ingredient_"+lang] }}</a> </div>
     <P class="twentysixpoint"></P>
 
     <div class ="nexttosidenav b" v-if ="pageNumber===2">
-      <a
-      v-for="item in chosenIngredients"
-      v-if ="item.category===2"
-     >{{ item["ingredient_"+lang]}}</a></div>
-    <div><a
-
-      v-for="item in chosenIngredients"
-      v-if ="item.category===2"
-      > {{ item["ingredient_"+lang]}}</a> </div>
-    <P class="twentysixpoint"></P>
-
-    <div class ="nexttosidenav c" v-if ="pageNumber ===3"><a
-
-    v-for="item in chosenIngredients"
-    v-if ="item.category===3"
-    > {{ item["ingredient_"+lang] }}</a></div>
-    <div><a
-
-      v-for="item in chosenIngredients"
-      v-if ="item.category===3"
-      > {{ item["ingredient_"+lang] }}</a> </div>
-    <P class="twentysixpoint"></P>
-
-    <div class ="nexttosidenav d" v-if ="pageNumber ===4">
       <a v-for="item in chosenIngredients"
-      v-if ="item.category===4">
-    {{ item["ingredient_"+lang] }}</a></div>
-
+    v-if ="item.category===2">
+    {{item["ingredient_"+lang] }} </a></div>
     <div>
       <a v-for="item in chosenIngredients"
-      v-if ="item.category===4">
-      {{ item["ingredient_"+lang] }}</a> </div>
+    v-if ="item.category===2"
+    > {{ item["ingredient_"+lang] }}</a> </div>
+<P class="twentysixpoint"></P>
+
+<div class ="nexttosidenav c" v-if ="pageNumber===3"><a
+v-for="item in chosenIngredients"
+v-if ="item.category===3"
+>{{item["ingredient_"+lang] }} </a></div>
+<div><a
+v-for="item in chosenIngredients"
+v-if ="item.category===3"
+> {{ item["ingredient_"+lang] }}</a> </div>
+
+<P class="twentysixpoint"></P>
+
+<div class ="nexttosidenav d" v-if ="pageNumber===4"><a
+v-for="item in chosenIngredients"
+v-if ="item.category===4"
+>{{item["ingredient_"+lang] }} </a></div>
+<div><a
+v-for="item in chosenIngredients"
+v-if ="item.category===4"
+> {{ item["ingredient_"+lang] }}</a> </div>
 
     <P class="twentysixpoint"></P>
 
-    <div class ="nexttosidenav e" v-if ="pageNumber ===5">
+    <div class ="nexttosidenav e" v-if ="pageNumber===5"><a
+    v-for="item in chosenIngredients"
+    v-if ="item.category===5"
+    >{{item["ingredient_"+lang] }} </a></div>
+    <div>
       <a v-for="item in chosenIngredients"
     v-if ="item.category===5">
      {{ item["ingredient_"+lang] }}</a> </div>
-    <div>
-      <a v-for="item in chosenIngredients"
-      v-if ="item.category===5">
-       {{ item["ingredient_"+lang]}} </a>
-     </div>
-      </div>
+
+  </div>
   <div id="ingredientHeader" >
     <h2  v-if = "pageNumber===1" style="font-family:'Bree Serif', serif">{{ uiLabels.bread }}</h2>
     <h2  v-if = "pageNumber===2" style="font-family:'Bree Serif', serif">{{ uiLabels.protein }}</h2>
@@ -166,7 +161,9 @@
     <hr>
     {{ currentBurger() }}, {{ price }} kr
     <button v-on:click="addBurger()">{{ uiLabels.addToOrder }}</button>
-      <button id="orderButton" v-if="pageNumber===5" v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+    <form>
+      <button id="orderButton" v-if="pageNumber===5"  formaction="/#/Payment" v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+    </form>
       <button id="nextButton" v-if="pageNumber<5" v-on:click="nextPage()">{{ uiLabels.next }}</button>
       <button id="backButton" v-on:click="previousPage()">Back</button>
 <!-- <button id= "placeOrder" v-on:click="placeOrder()" > {{ uiLabels.placeOrder }} </button> -->
@@ -222,21 +219,8 @@ export default {
   },
 
 methods:
-//burgerTypeOrdered: function() {
-//  var counter = 0;
-//  for (var i = 0;i < this.chosenIngredients.length;i++){
-//    if(this.chosenIngredients[i] === item){
-//      counter++;
-//    }
-
-//  for (let i = 0; i<this.chosenIngredients.length; i+=1) {
-//    for (let j =1; i<=5;i+=1)
-//    if (typeof this.chosenIngredients[i].category === 1){
-
-//    }
-//  }
-  //>>
 {
+
   addBurger: function () {
   for (let i = 0; i < this.chosenIngredients.length; i += 1) {
     if (typeof this.chosenIngredients[i].burgerCount === 'undefined') {
@@ -286,6 +270,12 @@ clearIngredients: function () {
       if(item.stock > counter){
         this.chosenIngredients.push(item);
         this.price += +item.selling_price;
+      }
+      else if (this.lang ==="sv") {
+        alert("slut på produkt");
+      }
+      else {
+        alert("Out of stock")
       }
     },
 
@@ -338,7 +328,7 @@ clearIngredients: function () {
 }
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
 #siteTitle {
-  margin-left: 120px;
+  margin-left:20%;
   margin-top: 0px;
   align-items:center;
   justify-content: center;
@@ -398,7 +388,7 @@ clearIngredients: function () {
   width: 100%;
   height: 15%;
   border-color:black;
-  border-bottom: 1px solid #ccd;
+  border-bottom: 2px solid gray;
   top:0;
   left:0;
   }
@@ -424,7 +414,7 @@ clearIngredients: function () {
   width: 100%;
   height: 25%;
   border-color:black;
-  border-top: 1px solid #ccd;
+  border-top: 2px solid gray;
   position: fixed;
   bottom:0;
   left:0;
@@ -558,17 +548,12 @@ clearIngredients: function () {
     padding: 2px 1;
 }
 
-
 .nexttosidenav div {
   border: 1px solid black;
   overflow-y:scroll;
   display: flex;
-  align-items:center;
-  justify-content: center;
   width: 5em;
   height: 3.5em;
-  border-radius: 25px;
-  background-color: #F4A460;
   margin-left: 80px;
 
 }
@@ -584,13 +569,6 @@ clearIngredients: function () {
   height: 3.5em;
   margin-left: 10px;
   border-radius: 50px;
-<<<<<<< HEAD
-=======
-  background-color: #F4A460;
-
->>>>>>> 3354eaf48b440554d5b73548a480224ff88d2e86
-
-  background-color: #F4A460;
 }
 
 .sidenav span{
@@ -617,42 +595,50 @@ clearIngredients: function () {
 
 }
 .a{
-    background-color: #FF8C00;
-
+  background-color: #F4A460;
+  white-space: pre;
 
 }
 .b {
   top:12.27%;
-    background-color: #FF8C00;
+  background-color: #F4A460;
+  white-space: pre;
+
 
 }
 .c {
   top:23.3%;
-    background-color: #FF8C00;
+  background-color: #F4A460;
+  white-space: pre;
+
 
 }
 .d {
   top:34.5%;
-    background-color: #FF8C00;
+  background-color: #F4A460;
+  white-space: pre;
+
+
 }
 .e {
   top:45.5%;
 
-    background-color: #FF8C00;
+  background-color: #F4A460;
+  white-space: pre;
+
 }
 
 
 .nexttosidenav div {
   border: 1px solid black;
   overflow-y:scroll;
-  display: flex;
+  display: fixed;
   align-items:center;
-  justify-content: center;
   width: 5em;
   height: 3.5em;
+  white-space: pre;
 
   border-radius: 25px;
-  margin-left: 80px;
 
 }
 
@@ -738,9 +724,12 @@ clearIngredients: function () {
   .v1 {
     height: 1000px;
 
-    left: 16.4em;
+    left: 16em;
     top: 5em;
     z-index: -2;
+  }
+  #siteTitle {
+    font-size: 30pt;
   }
 }
 @media screen and (max-width: 500px) {

@@ -2,7 +2,7 @@
 <div class="">
 
 
-	<div>
+	<div style ="text-align:center">
 		{{orderId}} {{order.type}}: {{ order.ingredients.map(item=>item["ingredient_"+ lang]).join(", ") }}
 
 	</div>
@@ -16,8 +16,8 @@
 		<h3 style="font-family:'Bree Serif';text-align: center;"> {{uiLabels.clickToPay}}  </h3>
 
 	<div style=" display: block;
-    margin-left: 15%;
-    margin-right: auto "v-on:click="orderPaid">
+    margin-left: 3.3em;
+    margin-right: 30%" v-on:click="orderPaid">
 		<form id= "paymentButton">
 
 			<input type="image" src="https://ecommercenews.eu/wp-content/uploads/2013/06/most_common_payment_methods_in_europe-740x393.png"  width="200" height="120" formaction="/#/"  >
@@ -57,6 +57,5 @@ export default {
 }
 </script>
 <style scoped>
-
 
 </style>

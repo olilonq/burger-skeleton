@@ -30,7 +30,6 @@
 
 <div class= "fastorderingheader">
 
-<h5 style="font-family:'Bree Serif', serif" > {{uiLabels.FastOrderingHeader}} </h5>
 
 </div>
 
@@ -300,7 +299,7 @@ clearIngredients: function () {
 
 
 .ingredient {
-  left:22%;
+  left:26%;
   width: 10em;
   height: 10em;
   background-size: 10em 10em;

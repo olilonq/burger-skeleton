@@ -9,23 +9,13 @@
     <div id="top"></div>
     <div id="bottom"></div>
 
-    <form id= homeButton>
+    <form id= "homeButton">
       <input type="image" src="https://thumbs.gfycat.com/BigheartedRepulsiveIndianelephant-small.gif"  width="48" height="48" formaction="/#/">
     </form>
 
 
-
-
-
-
-
     <div class="payment">
       <button id ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
-
-
-
-
-
 
 
       <div>
@@ -33,7 +23,11 @@
 
       </div>
 
-
+      <form id= "paymentButton">
+        <div>
+          <h3 style="text-align: center; font-family:'Bree Serif'"> {{uiLabels.clickToPay}}  </h3>
+        </div>
+      </form>
 
       <div>
         <h3 style="text-align: center; font-family:'Bree Serif'"> {{uiLabels.paymentOrder}} </h3>
@@ -59,8 +53,6 @@
 
 
 
-
-    </div>
 
   </body>
 </template>
@@ -280,9 +272,16 @@ clearIngredients: function () {
 
 
   @media screen and (min-height: 900px) and ( min-width: 700px)  {
-
-
+    .grid-c{
+      width:600px;
+      left: 8%;
+      height:auto;
+      padding:10px;
+      border-radius: 10px;
+      position: fixed;
+    }
 }
+
 
 
 
