@@ -15,7 +15,7 @@
       <div class="grid-c">
       <OrderItemToPrepare
         v-for="(order, key) in orders"
-        v-if="order.status !== 'done' && order.status !== 'served'"
+        v-if="order.status  !== 'done' && order.status !== 'served' "
         v-on:done= "markDone(key)"
         :order-id="key"
         :order="order"

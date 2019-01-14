@@ -1,14 +1,22 @@
 <template>
+<body>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+  </head>
+
   <div class="ordering">
 
     <div class ="upperBorder">
       <button id ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
+
+
       <form >
-        <input type="image" src="https://thumbs.gfycat.com/BigheartedRepulsiveIndianelephant-small.gif"  width="48" height="48" formaction="/#/">
+        <input type="image" src="https://thumbs.gfycat.com/BigheartedRepulsiveIndianelephant-small.gif"  width="48" height="48" formaction="/#/" >
       </form>
 
 
-      <h1 id="siteTitle"> </h1>
+
+      <h3 id="siteTitle" style="font-family:'Bree Serif', serif"> Crafty Burgers </h3>
     </div>
 
     <div class="sidenav">
@@ -130,12 +138,12 @@
        {{ (item=> item["ingredient_"+lang]).join('\n') }} </a>
      </div>
       </div>
-  <div id="ingredientHeader">
-    <h1  v-if = "pageNumber===1">{{ uiLabels.bread }}</h1>
-    <h1  v-if = "pageNumber===2">{{ uiLabels.protein }}</h1>
-    <h1  v-if = "pageNumber===3">{{ uiLabels.vegetable }}</h1>
-    <h1  v-if = "pageNumber===4">{{ uiLabels.other }}</h1>
-    <h1  v-if = "pageNumber===5">{{ uiLabels.sides }}</h1>
+  <div id="ingredientHeader" >
+    <h2  v-if = "pageNumber===1" style="font-family:'Bree Serif', serif">{{ uiLabels.bread }}</h2>
+    <h2  v-if = "pageNumber===2" style="font-family:'Bree Serif', serif">{{ uiLabels.protein }}</h2>
+    <h2  v-if = "pageNumber===3" style="font-family:'Bree Serif', serif">{{ uiLabels.vegetable }}</h2>
+    <h2  v-if = "pageNumber===4" style="font-family:'Bree Serif', serif">{{ uiLabels.other }}</h2>
+    <h2  v-if = "pageNumber===5" style="font-family:'Bree Serif', serif">{{ uiLabels.sides }}</h2>
   </div>
 
 
@@ -153,7 +161,7 @@
       </div>
     <div class="bottomBorder">
 
-      <h2 id="currentOrder">{{ uiLabels.order }}</h2>
+      <h2 id="currentOrder" style="font-family:'Bree Serif', serif">{{ uiLabels.order }}</h2>
       {{ burgersInOrder() }}
     <hr>
     {{ currentBurger() }}, {{ price }} kr
@@ -164,12 +172,16 @@
 <!-- <button id= "placeOrder" v-on:click="placeOrder()" > {{ uiLabels.placeOrder }} </button> -->
 
 <form>
-<button id="placeOrder" formaction="/#/Payment"> {{ uiLabels.placeOrder }} </button>
+
+<button id="finalorderbutton"  formaction="/#/Payment" > {{ uiLabels.placeOrder }} </button>
+
 </form>
+
 
 
     </div>
   </div>
+</body>
 </template>
 <script>
 
@@ -311,10 +323,12 @@ clearIngredients: function () {
 }
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
 #siteTitle {
-  display: flex;
+  margin-left: 120px;
+  margin-top: 0px;
   align-items:center;
   justify-content: center;
   color:black;
+
 }
 
 .img {
@@ -347,7 +361,7 @@ clearIngredients: function () {
 }
 
 .v1 {
-  border-left: 1px solid gray;
+  border-left: 1px solid #DCDCDC;
   height: 700px;
 
   position: absolute;
@@ -426,12 +440,26 @@ clearIngredients: function () {
   background-color: rgb(0,200,0);
 }
 
+
+
 #nextButton {
   position: absolute;
   transition: .5s ease;
   top: 0;
   right: 0;
   background-color: rgb(0,200,0);
+}
+
+#finalorderbutton {
+
+  position: absolute;
+  transition: .5s ease;
+  margin-top: 1px;
+  margin-left: 25px;
+  right: 0;
+  background-color: rgb(0,200,0);
+
+
 }
 
 #backButton {
@@ -515,7 +543,7 @@ clearIngredients: function () {
     padding: 2px 1;
 }
 
-<<<<<<< HEAD
+
 .nexttosidenav div {
   border: 1px solid black;
   overflow-y:scroll;
@@ -529,8 +557,7 @@ clearIngredients: function () {
   margin-left: 80px;
 
 }
-=======
->>>>>>> 46b1c41393d61e63926ccb50fd6084243a39950e
+
 
 .sidenav div {
   border: 1px solid black;
@@ -543,11 +570,8 @@ clearIngredients: function () {
   height: 3.5em;
   margin-left: 10px;
   border-radius: 50px;
-<<<<<<< HEAD
-  background-color: #F4A460;
-=======
->>>>>>> 46b1c41393d61e63926ccb50fd6084243a39950e
 
+  background-color: #F4A460;
 }
 
 .sidenav span{

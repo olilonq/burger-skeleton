@@ -15,27 +15,54 @@
 
 
 
+
+
+
+
     <div class="payment">
       <button id ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
 
 
 
 
+
+
+
       <div>
         <h1 style="text-align: center; font-family:'Bree Serif'"> {{ uiLabels.payment }} </h1>
+
+
       </div>
 
 
-      <form id= paymentButton>
+      <form id= "paymentButton">
         <div>
           <h3 style="text-align: center; font-family:'Bree Serif'"> {{uiLabels.clickToPay}}  </h3>
         </div>
 
-        <input type="image" src="https://ecommercenews.eu/wp-content/uploads/2013/06/most_common_payment_methods_in_europe-740x393.png"  width="200" height="120" formaction="/#/">
+        <input type="image" src="https://ecommercenews.eu/wp-content/uploads/2013/06/most_common_payment_methods_in_europe-740x393.png"  width="200" height="120" formaction="/#/"  >
       </form>
 
       <div>
         <h3 style="text-align: center; font-family:'Bree Serif'"> {{uiLabels.paymentOrder}} </h3>
+
+        <div class="griditem" v-for="(order, key) in orders" :key="key">
+                <div class="grid-c">
+          <OrderItem
+            v-if="order.status === 'not-started'"
+            :order-id="key"
+            v-on:served="markServed(key)"
+            :order="order"
+            :lang="lang"
+            :ui-labels="uiLabels">
+          </OrderItem>
+                  </div>
+
+      </div>
+      </div>
+
+
+
       </div>
 
 
@@ -95,6 +122,16 @@ methods: {
   this.burgerCount += 1;
   this.clearIngredients();
 },
+
+  markServed: function (orderid) {
+  this.$store.state.socket.emit("orderServed", orderid);
+
+  },
+
+  markDone: function (orderid) {
+    this.$store.state.socket.emit("orderDone", orderid);
+  },
+
 currentBurger: function () {
   return this.chosenIngredients.map(function (item) {
     if (typeof item.burgerCount === 'undefined') {
@@ -178,6 +215,7 @@ clearIngredients: function () {
       if(this.pageNumber > 1){
         this.pageNumber -=1
       }}
+
   }
 }
 </script>
@@ -191,6 +229,17 @@ clearIngredients: function () {
 
 
 <style scoped>
+
+.grid-c{
+  display: grid;
+  max.width: 600px 200px 200px 200px 200px;
+  width:550px;
+  height:auto;
+  margin:10px;
+  padding:10px;
+  background: #FBDE4B;
+  border-radius: 25px;
+}
 
   #top, #bottom, #left, #right {
   	background: gray;
