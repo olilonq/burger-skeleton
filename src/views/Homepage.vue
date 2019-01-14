@@ -298,6 +298,14 @@ clearIngredients: function () {
 
 
 }
+.ingredient {
+  left:22%;
+  width: 10em;
+  height: 10em;
+  background-size: 10em 10em;
+
+}
+
 
 }
 

@@ -1,6 +1,6 @@
 <template>
 
-  <div id="orders">
+  <div id="orders" >
     <button id ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
 
     <!--Antal 100g: {{countBeef100}},
@@ -31,7 +31,7 @@
     <div>
 
         <div class="griditem" v-for="(order, key) in orders" :key="key">
-                <div class="grid-c">
+        <div class="grid-c">
           <OrderItem
             v-if="order.status === 'done'"
             :order-id="key"
@@ -46,20 +46,32 @@
     </div>
     </div>
   </div>
-  <div class="stock">
+  <div class="stock" >
 
     <div style="display:flex; justify-content:space-evenly;">
-        <div v-for= "(item,key) in StockItems" class="StockItems" :key="key" v-bind:style="{ background: item.color }" style="padding: 10px;">
-        <div style="font-size: 30px; padding:8px;">{{item.label}}</div>
-        <div v-for="item in item.stockLow" >
-          <div style="font-size: 20px;">{{item}}</div>
-        </div>
+        <div v-on:click="ShowStock = true" v-for= "(item,key) in StockItems" class="StockItems" :key="key" v-bind:style="{ background: item.color }" >
+        <h3>{{item.label}}</h3>
 
+        </div>
         </div>
 
       </div>
+
+
+  <div class="stockWindow" v-show="ShowStock">
+    <div>
+          <div v-for="(item, index) in ingredients">
+            <div v-if="item.stock < 10"> {{ item.ingredient_en }}:{{ item.stock }}st </div>
+          </div>
   </div>
+  <button type="button" v-on:click="ShowStock = false">Close</button>
   </div>
+
+
+
+  </div>
+
+
 </template>
 <script>
 
@@ -170,7 +182,7 @@ export default {
      }
 
    }
-   return  ItemsLow;
+   return ItemsLow;
  },
 
    getStock: function (cat) {
@@ -244,6 +256,7 @@ export default {
   .grid-d{
     display: grid;
     grid-template-columns: 600px 600px;
+
   }
 
   .stock {
@@ -262,5 +275,16 @@ export default {
     text-align: center;
     margin: 0 10px;
   }
+
+  .stockWindow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background: azure;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid gray;
+}
 
 </style>

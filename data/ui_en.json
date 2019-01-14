@@ -27,6 +27,8 @@
   "back" : "Back",
   "served": "Served",
   "payment":"Payment",
+  "welcomeTo":"Welcome to",
+  "createBurger": "Create your own burger",
   "paymentOrder": "Your order",
   "clickToPay" : "Click to pay",
   "welcome" : "Welcome to ",

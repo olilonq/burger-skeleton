@@ -30,6 +30,7 @@
   "paymentOrder": "Din beställning",
   "clickToPay": "Klicka för att betala",
   "welcome" : "Välkommen till ",
-  "CreateBurger" : "Skapa din egen burgare"
+  "CreateBurger" : "Skapa din egen burgare",
+  "FastOrderingHeader": "Bråttom? Pröva en av våra färdiga burgare!"
 
 }
