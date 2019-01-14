@@ -110,7 +110,6 @@
     <hr>
     {{ currentBurger() }}, {{ price }} kr
     <button v-on:click="addBurger()">{{ uiLabels.addToOrder }}</button>
-    <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
       <button id="orderButton" v-if="pageNumber===5" v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
       <button id="nextButton" v-if="pageNumber<5" v-on:click="nextPage()">{{ uiLabels.next }}</button>
       <button id="backButton" v-on:click="previousPage()">Back</button>
@@ -157,6 +156,7 @@ export default {
       orderNumber: "",
       pageNumber:1,
       burgerCount: 1
+
     }
   },
   created: function () {
@@ -187,8 +187,17 @@ burgersInOrder: function () {
     if (typeof item.burgerCount !== 'undefined') {
       return item.burgerCount + ": " + item["ingredient_" + this.lang];
     }
-  }.bind(this)).join(', ');
+  }.bind(this)).join(' ');
 },
+
+burgerCounter: function () {
+  return this.chosenIngredients.map(function (item) {
+    if (typeof item.burgerCount === 'undefined') {
+      return item["ingredient_" + this.lang];
+    }
+  }.bind(this));
+},
+
 clearIngredients: function () {
   //set all counters to 0. Notice the use of $refs
   for (let i = 0; i < this.$refs.ingredient.length; i += 1) {
@@ -201,8 +210,10 @@ clearIngredients: function () {
     },
 
     removeFromOrder: function(item){
-      this.chosenIngredients.splice(item,1);
-      this.price -= item.selling_price;
+      if(this.price > 0){
+        this.chosenIngredients.splice(item,1);
+        this.price -= item.selling_price;
+      }
     },
     placeOrder: function () {
 
