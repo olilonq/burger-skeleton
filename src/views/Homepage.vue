@@ -199,7 +199,6 @@ td {
   background-color: green;
 }
 
-<<<<<<< HEAD
 .bottombox {
   position: fixed;
   top: 84%;
@@ -221,16 +220,6 @@ td {
   height: 55px;
   border: 1px solid gray;
   border-radius: 15px;
-
-
-=======
->>>>>>> f10701dda3f32c6e2a2023e477d62f9709af0c5f
-
-
-
-
-
-<<<<<<< HEAD
 }
 
 .theborder {
@@ -254,8 +243,6 @@ td {
     height: 110px;
     right: 10%;
     left:40%
-=======
->>>>>>> f10701dda3f32c6e2a2023e477d62f9709af0c5f
 
   }
 }
