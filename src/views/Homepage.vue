@@ -18,6 +18,19 @@
       <h2 style="font-family:'Bree Serif', serif">  Welcome to </h2>
       <h1 style="font-family:'Bree Serif', serif"> Crafty Burgers</h1>
 
+      <div class="fastorderpanel">
+        <Ingredient
+        v-if ="item.category===pageNumber"
+        ref="ingredient"
+        v-for="item in ingredients"
+        v-on:increment="addToOrder(item)"
+        v-on:decrease="removeFromOrder(item)"
+        :item="item"
+        :lang="lang"
+        :key="item.ingredient_id">
+        </Ingredient>
+        </div>
+
 
       <div class ="upperBorder">
         <button id ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
@@ -26,44 +39,7 @@
    <div class="mainBorder">
      <div class="button">
      <button id="CraftButton" href="/ordering">Create your own burger<img src="http://thinkingstiff.com/images/matt.jpg"></button>
-     <div class= "bottombox">
-       <table>
-         <tr>
-           <td>
-
-
-       <div class= "boxwithin">
-
-       </div>
-     </td>
-     <td>
-       <div class ="boxwithin">
-       </div>
-     </td>
-     <td>
-
-       <div class ="boxwithin">
-       </div>
-
-     </td>
-
-     <td>
-
-       <div class ="boxwithin">
-       </div>
-
-     </td>
-
-
-
-     </tr>
-
-   </table>
-
-
-
-     </div>
-     </div>
+     <button id= "fastorderbutton" v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
 
      <form>
    <button id="CraftButton" formaction="/#/ordering">Create your own burger</button>
@@ -101,7 +77,7 @@ export default {
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
-      pageNumber:1,
+      pageNumber:6,
     }
   },
   created: function () {
@@ -165,11 +141,58 @@ table {
 
 }
 
-td {
-  height: 3.5em;
+#fastorderbutton{
+
+  position: relative;
+  margin-top: 93%;
+  margin-right:45%;
+  margin-left: 55%;
+  height: 40%;
+  width: 30%;
+
+
+
+
 }
 
 
+
+
+.fastorderpanel {
+  position: fixed;
+  margin-top: 45%;
+  margin-right:45%;
+  margin-left: 5%;
+  height: 40%;
+  width: 30%;
+
+  display:grid;
+  grid-template-columns: auto auto;
+
+
+}
+
+.ingredient {
+  border: 1px solid #ccd;
+  border-radius:10px;
+  width: 5em;
+  height: 5em;
+  margin-left: 0.5em;
+  margin-bottom:0.5em;
+  color: black;
+  background-size: 5em 5em;
+
+}
+#ingredientHeader {
+  align-items:center;
+  justify-content: center;
+
+  position: fixed;
+  z-index:2;
+  top:12%;
+  right: 17%;
+
+}
 
 .homepageheader{
   color: black;
@@ -191,8 +214,8 @@ td {
   transition: .5s ease;
   font-size: 30px;
   width: 60%;
-  height: 30%;
-  top: 50%;
+  height: 25%;
+  top: 44%;
   right: 20%;
   overflow: hidden;
   border-radius: 8vh;
