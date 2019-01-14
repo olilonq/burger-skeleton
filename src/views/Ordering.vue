@@ -200,16 +200,25 @@ burgerCounter: function () {
 clearIngredients: function () {
   //set all counters to 0. Notice the use of $refs
   for (let i = 0; i < this.$refs.ingredient.length; i += 1) {
-    this.$refs.ingredient[i].resetCounter();
+    this.$refs.ingredient[i];
   }
 },
     addToOrder: function (item) {
-      this.chosenIngredients.push(item);
-      this.price += +item.selling_price;
+      var counter = 0;
+      for (var i = 0;i < this.chosenIngredients.length;i++){
+        if(this.chosenIngredients[i] === item){
+          counter++;
+        }
+      }
+
+      if(item.stock > counter){
+        this.chosenIngredients.push(item);
+        this.price += +item.selling_price;
+      }
     },
 
     removeFromOrder: function(item){
-      if(this.price > 0){
+      if(this.price > 0 && this.chosenIngredients.includes(item)){
         this.chosenIngredients.splice(item,1);
         this.price -= item.selling_price;
       }
