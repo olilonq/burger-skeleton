@@ -544,8 +544,6 @@ clearIngredients: function () {
   margin-left: 80px;
 
 }
-=======
->>>>>>> 46b1c41393d61e63926ccb50fd6084243a39950e
 
 .sidenav div {
   border: 1px solid black;
@@ -558,10 +556,8 @@ clearIngredients: function () {
   height: 3.5em;
   margin-left: 10px;
   border-radius: 50px;
-<<<<<<< HEAD
   background-color: #F4A460;
-=======
->>>>>>> 46b1c41393d61e63926ccb50fd6084243a39950e
+
 
 }
 
