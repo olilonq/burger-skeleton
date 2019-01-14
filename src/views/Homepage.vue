@@ -130,9 +130,17 @@ clearIngredients: function () {
     },
 
     removeFromOrder: function(item){
-      this.chosenIngredients.splice(item,1);
-      this.price -= item.selling_price;
+      if(this.price > 0 && this.chosenIngredients.includes(item)){
+        for(var i = 0; i < this.chosenIngredients.length;i++){
+          if(this.chosenIngredients[i] === item){
+            break;
+          }
+        }
+        this.chosenIngredients.splice(i,1);
+        this.price -= item.selling_price;
+      }
     },
+    
     placeOrder: function () {
       var i,
       //Wrap the order in an object
