@@ -123,7 +123,7 @@ clearIngredients: function () {
 },
 
 
-   
+
     addToOrder: function (item) {
       this.chosenIngredients.push(item);
       this.price += +item.selling_price;
@@ -182,20 +182,15 @@ clearIngredients: function () {
   height: 40%;
   width: 30%;
 
-
-
-
 }
 
-
-
-
 .fastorderpanel {
-  position: relative;
+  position: absolute;
   margin-right:45%;
-  margin-left: 5%;
-  height: 40%;
+  margin-left: 20%;
+  height: 30%;
   width: 30%;
+  top: 75%;
   display:grid;
   grid-template-columns: auto auto;
 
@@ -205,24 +200,15 @@ clearIngredients: function () {
 .ingredient {
   border: 1px solid #ccd;
   border-radius:10px;
-  width: 5em;
-  height: 5em;
-  margin-left: 0.5em;
+  width: 6em;
+  height: 6em;
+  margin-right: 0.5em;
   margin-bottom:0.5em;
   color: black;
-  background-size: 5em 5em;
+  background-size: 6.5em 6em;
 
 }
-#ingredientHeader {
-  align-items:center;
-  justify-content: center;
 
-  position: fixed;
-
-  top:12%;
-  right: 17%;
-
-}
 
 .homepageheader{
   color: black;
