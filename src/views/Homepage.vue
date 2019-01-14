@@ -5,27 +5,39 @@
       <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
     </head>
 
+
+
+
   <div class="homepage">
   <div class="homepageheader">
 
-      <h2 style="font-family:'Bree Serif', serif">  {{ uiLabels.welcomeTo }} </h2>
-      <h1 style="font-family:'Bree Serif', serif"> Crafty Burgers</h1>
+      <h2 style="font-family:'Bree Serif', serif">  {{uiLabels.welcome}} </h2>
+      <h1 style="font-family:'Bree Serif', serif"> Crafty Burgers </h1>
 
       <div class ="upperBorder">
-        <button id ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
+        <button id ="languageButton" v-on:click="switchLang()"> {{ uiLabels.language }} </button>
       </div>
     </div>
 
 
    <div class="mainBorder">
      <div class="button">
-     <button id="CraftButton" href="/ordering">{{ uiLabels.createBurger }}<img src="http://thinkingstiff.com/images/matt.jpg"></button>
+     <button id="CraftButton" href="/ordering" > {{uiLabels.CreateBurger}} <img src="http://thinkingstiff.com/images/matt.jpg"></button>
 </div>
      <form>
-   <button id="CraftButton" formaction="/#/ordering">{{ uiLabels.createBurger }}</button>
+   <button id="CraftButton" formaction="/#/ordering" style="font-family:'Bree Serif', serif"> {{uiLabels.CreateBurger}} </button>
    </form>
 </div>
+
+<div class= "fastorderingheader">
+
+<h5 style="font-family:'Bree Serif', serif" > {{uiLabels.FastOrderingHeader}} </h5>
+
+</div>
+
+
    <div class="fastorderpanel">
+
      <Ingredient
      v-if ="item.category===pageNumber"
      ref="ingredient"
@@ -42,8 +54,11 @@
 
 
 
+
      <form>
-     <button id="fastorderbutton" v-on:click = "placeOrder()" formaction="/#/Payment"> {{ uiLabels.placeOrder }} </button>
+
+       <button id= "fastorderbutton" v-on:click="placeOrder()"  formaction="/#/Payment" style="box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19) "> {{ uiLabels.placeOrder }}</button>
+
      </form>
 
 
@@ -183,12 +198,31 @@ clearIngredients: function () {
 
 <style scoped>
 
+.fastorderingheader{
+
+  align-items:center;
+  justify-content: center;
+
+  position: fixed;
+  z-index:2;
+  top:68%;
+  right: 70%;
+
+
+
+
+
+}
+
+
+
+
 
 
 #fastorderbutton{
 
   position: fixed;
-  top:93%;
+  top:92%;
   left:37.5%;
   height: 5%;
   width: 25%;
@@ -250,6 +284,10 @@ clearIngredients: function () {
   background-color: green;
 }
 
+
+
+
+
 @media screen and (min-height: 900px) and ( min-width: 700px) {
   .homepageheader {
     font-size: 6vw;
@@ -270,6 +308,10 @@ clearIngredients: function () {
 
 
 }
+
+
+
+
 
 
 </style>

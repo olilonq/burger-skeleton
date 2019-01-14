@@ -31,7 +31,6 @@
       <div>
         <h1 style="text-align: center; font-family:'Bree Serif'"> {{ uiLabels.payment }} </h1>
 
-
       </div>
 
 
