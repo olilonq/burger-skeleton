@@ -75,7 +75,7 @@
     <div class ="nexttosidenav a" v-if ="pageNumber===1"><a
     v-for="item in chosenIngredients"
     v-if ="item.category===1"
-    >{{item["ingredient_"+lang]}}</a></div>
+    >{{item["ingredient_"+lang] }} </a></div>
     <div><a
 
       v-for="item in chosenIngredients"
@@ -127,7 +127,7 @@
     <div>
       <a v-for="item in chosenIngredients"
       v-if ="item.category===5">
-       {{ (item=> item["ingredient_"+lang]).join('\n') }} </a>
+       {{ item["ingredient_"+lang]}} </a>
      </div>
       </div>
   <div id="ingredientHeader">
@@ -194,7 +194,7 @@ export default {
       price: 0,
       orderNumber: "",
       pageNumber:1,
-      burgerCount: 1
+      burgerCount: 1,
 
     }
   },
@@ -204,7 +204,22 @@ export default {
     }.bind(this));
   },
 
-methods: {
+methods:
+//burgerTypeOrdered: function() {
+//  var counter = 0;
+//  for (var i = 0;i < this.chosenIngredients.length;i++){
+//    if(this.chosenIngredients[i] === item){
+//      counter++;
+//    }
+
+//  for (let i = 0; i<this.chosenIngredients.length; i+=1) {
+//    for (let j =1; i<=5;i+=1)
+//    if (typeof this.chosenIngredients[i].category === 1){
+
+//    }
+//  }
+  //>>
+{
   addBurger: function () {
   for (let i = 0; i < this.chosenIngredients.length; i += 1) {
     if (typeof this.chosenIngredients[i].burgerCount === 'undefined') {

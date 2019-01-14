@@ -26,6 +26,8 @@
   "home" : "Home",
   "back" : "Back",
   "served": "Served",
-  "payment":"Payment"
+  "payment":"Payment",
+  "welcomeTo":"Welcome to",
+  "createBurger": "Create your own burger"
 
 }

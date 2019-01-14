@@ -26,5 +26,8 @@
   "home" : "Hem",
   "back" : "Tillbaka",
   "served": "Serverad",
-  "payment":"Betalning"
+  "payment":"Betalning",
+  "welcomeTo":"Välkommen till",
+  "createBurger": "Skapa din egen burgare"
+
 }

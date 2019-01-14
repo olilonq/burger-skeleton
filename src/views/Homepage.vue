@@ -8,7 +8,7 @@
   <div class="homepage">
   <div class="homepageheader">
 
-      <h2 style="font-family:'Bree Serif', serif">  Welcome to </h2>
+      <h2 style="font-family:'Bree Serif', serif">  {{ uiLabels.welcomeTo }} </h2>
       <h1 style="font-family:'Bree Serif', serif"> Crafty Burgers</h1>
 
       <div class ="upperBorder">
@@ -19,10 +19,10 @@
 
    <div class="mainBorder">
      <div class="button">
-     <button id="CraftButton" href="/ordering">Create your own burger<img src="http://thinkingstiff.com/images/matt.jpg"></button>
+     <button id="CraftButton" href="/ordering">{{ uiLabels.createBurger }}<img src="http://thinkingstiff.com/images/matt.jpg"></button>
 </div>
      <form>
-   <button id="CraftButton" formaction="/#/ordering">Create your own burger</button>
+   <button id="CraftButton" formaction="/#/ordering">{{ uiLabels.createBurger }}</button>
    </form>
 </div>
    <div class="fastorderpanel">
@@ -256,6 +256,14 @@ clearIngredients: function () {
 
 
 }
+.ingredient {
+  left:22%;
+  width: 10em;
+  height: 10em;
+  background-size: 10em 10em;
+
+}
+
 
 }
 
