@@ -26,6 +26,8 @@
   "home" : "Home",
   "back" : "Back",
   "served": "Served",
-  "payment":"Payment"
+  "payment":"Payment",
+  "paymentOrder": "Your order",
+  "clickToPay" : "Click to pay"
 
 }
