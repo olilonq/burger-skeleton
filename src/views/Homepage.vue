@@ -6,8 +6,9 @@
     </head>
 
 
-  <div class="homepage">
 
+
+  <div class="homepage">
   <div class="homepageheader">
 
       <h2 style="font-family:'Bree Serif', serif">  {{uiLabels.welcome}} </h2>
@@ -43,6 +44,7 @@
      v-on:increment="addToOrder(item)"
      v-on:decrease="removeFromOrder(item)"
      :item="item"
+     :lang="lang"
      :key="item.ingredient_id">
      </Ingredient>
      </div>
@@ -136,12 +138,24 @@ clearIngredients: function () {
   }
 },
 
-
-
-    addToOrder: function (item) {
-      this.chosenIngredients.push(item);
-      this.price += +item.selling_price;
-    },
+addToOrder: function (item) {
+  var counter = 0;
+  for (var i = 0;i < this.chosenIngredients.length;i++){
+    if(this.chosenIngredients[i] === item){
+      counter++;
+    }
+  }
+  if(item.stock > counter){
+    this.chosenIngredients.push(item);
+    this.price += +item.selling_price;
+  }
+  else if (this.lang ==="sv") {
+    alert("slut på produkt")
+  }
+  else {
+    alert("Out of stock")
+  }
+},
 
     removeFromOrder: function(item){
       if(this.price > 0 && this.chosenIngredients.includes(item)){
@@ -295,8 +309,6 @@ clearIngredients: function () {
 
 
 }
-
-
 .ingredient {
   left:26%;
   width: 10em;

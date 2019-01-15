@@ -262,7 +262,7 @@ clearIngredients: function () {
         this.price += +item.selling_price;
       }
       else if (this.lang ==="sv") {
-        alert("slut på produkt");
+        alert("slut på produkt")
       }
       else {
         alert("Out of stock")
