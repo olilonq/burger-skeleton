@@ -168,11 +168,6 @@ v-if ="item.category===4"
       <button id="backButton" v-on:click="previousPage()">Back</button>
 <!-- <button id= "placeOrder" v-on:click="placeOrder()" > {{ uiLabels.placeOrder }} </button> -->
 
-<form>
-
-<button id="finalorderbutton"  formaction="/#/Payment" > {{ uiLabels.placeOrder }} </button>
-
-</form>
 
 
 
