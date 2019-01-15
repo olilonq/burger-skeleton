@@ -259,7 +259,7 @@ export default {
       border: 5px;
       overflow:auto;
       margin:5px;
-      max-height: 590px;
+      max-height: 75vh;
       overflow-y: scroll;
       scroll-snap-type: y mandatory;
 

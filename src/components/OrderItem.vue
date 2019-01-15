@@ -15,9 +15,7 @@
 
 		<h3 style="font-family:'Bree Serif';text-align: center;"> {{uiLabels.clickToPay}}  </h3>
 
-	<div style=" display: block;
-    margin-left: 3.3em;
-    margin-right: 30%" v-on:click="orderPaid">
+	<div class ="orderDiv"  v-on:click="orderPaid">
 		<form id= "paymentButton">
 
 			<input type="image" src="https://ecommercenews.eu/wp-content/uploads/2013/06/most_common_payment_methods_in_europe-740x393.png"  width="200" height="120" formaction="/#/"  >
@@ -58,4 +56,14 @@ export default {
 </script>
 <style scoped>
 
+.orderDiv {
+		display: block;
+    margin-left: 3.3em;
+    margin-right: 30%
+}
+@media screen and (min-height: 900px) and (max-height: 1100px) and ( min-width: 700px) and (max-width: 850px) {
+		.orderDiv{
+			margin-left: 13em;
+			}
+}
 </style>

@@ -43,7 +43,6 @@
      v-on:increment="addToOrder(item)"
      v-on:decrease="removeFromOrder(item)"
      :item="item"
-     :lang="lang"
      :key="item.ingredient_id">
      </Ingredient>
      </div>

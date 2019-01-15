@@ -38,9 +38,9 @@ data.initializeData();
 io.on('connection', function (socket) {
   let uiLang = "en";
   // Send list of orders and text labels when a client is ready
-    socket.on('pageLoaded', function() {
+    socket.on('pageReady', function() {
       socket.emit('initialize', { orders: data.getAllOrders(),
-                                  uiLabels: data.getUILabels(),
+                                  uiLabels: data.getUILabels(uiLang),
                                   ingredients: data.getIngredients() });
     });
 
