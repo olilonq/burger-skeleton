@@ -588,16 +588,17 @@ clearIngredients: function () {
     top:0.8%;
   }
   .b {
-    top:10.32%;
-  }
+
+    top:11.55%;
+}
   .c {
-    top:19.89%;
+    top:22.3%;
   }
   .d {
-    top:29.4%;
+    top:33%;
   }
   .e {
-    top:39%;
+    top:43.75%;
   }
   .nexttosidenav div {
     width: 8em;
