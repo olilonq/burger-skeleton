@@ -18,11 +18,7 @@
       <button id ="languageButton" v-on:click="switchLang()">{{ uiLabels.language }} </button>
 
 
-      <div>
-        <h1 style="text-align: center; font-family:'Bree Serif'"> {{ uiLabels.payment }} </h1>
-
-      </div>
-
+      
       <form id= "paymentButton">
         <div>
           <h3 style="text-align: center; font-family:'Bree Serif'"> {{uiLabels.clickToPay}}  </h3>
